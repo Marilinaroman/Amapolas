@@ -1,3 +1,44 @@
+@media only screen and (max-width: 768px) {
+  #desayunos .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; }
+  #tortas .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; }
+  #quienes_somos #formulario .carousel {
+    display: grid;
+    align-items: center; } }
+
+@media only screen and (max-width: 360px) {
+  #desayunos .row, #tortas .row {
+    grid-template-columns: 1fr;
+    max-width: 90%; }
+  #quienes_somos .nosotros p {
+    width: 100%; }
+  #quienes_somos #formulario .row {
+    display: flex;
+    flex-direction: column-reverse;
+    grid-template-columns: 1fr; }
+    #quienes_somos #formulario .row .contacto, #quienes_somos #formulario .row .col-7 {
+      display: grid;
+      justify-content: center;
+      width: 100%; }
+    #quienes_somos #formulario .row .carousel {
+      width: 100%;
+      margin-bottom: 1rem; }
+  #quienes_somos #formulario .titulos {
+    margin-top: 1rem; }
+  #iniciar_sesion {
+    display: block; }
+    #iniciar_sesion #mi_sesion, #iniciar_sesion #registrarme {
+      display: grid;
+      width: 100%;
+      margin: 0.5rem;
+      margin-bottom: 1rem; }
+      #iniciar_sesion #mi_sesion #registratme, #iniciar_sesion #mi_sesion .btn, #iniciar_sesion #registrarme #registratme, #iniciar_sesion #registrarme .btn {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem; } }
+
 * {
   margin: 0;
   padding: 0%;
@@ -7,11 +48,15 @@
 
 nav {
   background-color: white; }
+  nav .navbar-toggler:focus {
+    box-shadow: none; }
+  nav .nav-link {
+    color: #000; }
 
 .imagen_principal {
   margin-bottom: 1rem; }
 
-.banner {
+.titulos {
   margin: 2rem;
   font-size: 3rem; }
 
@@ -29,62 +74,13 @@ nav {
     border-color: #fad8ce;
     outline: none !important; }
 
+#quienes_somos .nosotros {
+  margin-top: 5rem; }
+
+.cuenta {
+  height: 35rem; }
+  .cuenta h1 {
+    margin-bottom: 3rem; }
+
 footer {
   background-image: linear-gradient(to bottom, #ffffff, #fbf8fc, #fbf0f7, #fce8ee, #fde1e2, #fddddd, #fed8d7, #fed4d1, #ffd2d6, #ffd0dc, #fecee3, #faceeb); }
-
-#preguntas_frecuentes .categorias {
-  display: grid;
-  grid-template-columns: repeat(1fr);
-  gap: 20px;
-  margin-bottom: 60px; }
-  #preguntas_frecuentes .categorias .categoria {
-    cursor: pointer;
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    font-weight: 700;
-    border: 2px solid transparent;
-    transition: .3s ease all; }
-    #preguntas_frecuentes .categorias .categoria:hover {
-      color: #000;
-      border-color: #d1e9a3; }
-    #preguntas_frecuentes .categorias .categoria img {
-      width: 44px;
-      margin-bottom: 10px; }
-  #preguntas_frecuentes .categorias .activa {
-    border-color: #d1e9a3; }
-
-#preguntas_frecuentes .preguntas .contenedor_preguntas {
-  display: none;
-  grid-template-columns: 1fr;
-  gap: 40px; }
-  #preguntas_frecuentes .preguntas .contenedor_preguntas .contenedor_pregunta {
-    background: #fff;
-    padding: 20px;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: .1s ease all;
-    cursor: pointer; }
-    #preguntas_frecuentes .preguntas .contenedor_preguntas .contenedor_pregunta:hover {
-      border-color: #fad8ce; }
-    #preguntas_frecuentes .preguntas .contenedor_preguntas .contenedor_pregunta .pregunta {
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center; }
-    #preguntas_frecuentes .preguntas .contenedor_preguntas .contenedor_pregunta .respuesta {
-      color: #808080;
-      line-height: 30px;
-      max-height: 0;
-      opacity: 0;
-      transition: .3s ease all; }
-
-#preguntas_frecuentes .preguntas .activo {
-  display: grid; }
-  #preguntas_frecuentes .preguntas .activo .activa .respuesta {
-    display: grid;
-    opacity: 1;
-    margin-top: 20px; }

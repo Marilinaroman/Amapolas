@@ -1,3 +1,5 @@
+@import "mQueries";
+
 *{
     margin: 0;
     padding: 0%;
@@ -6,17 +8,24 @@
     list-style: none;
 }
 //----------Inicio---------//
+
 //-----Navbar-----//
 nav{
     background-color: white;
+    .navbar-toggler:focus{
+        box-shadow: none;
+    }
+    .nav-link{
+        color: #000;
+    }
+    
 }
 .imagen_principal{
     margin-bottom: 1rem;
 }
-.banner{
+.titulos{
         margin: 2rem;
         font-size: 3rem;
-
 }
 .producto{
     margin: 1rem;
@@ -35,80 +44,18 @@ nav{
         
     }
 }
+#quienes_somos {
+    .nosotros{
+        margin-top: 5rem;
+    }
+}
+.cuenta{
+    height: 35rem;
+    h1{
+        margin-bottom: 3rem;
+    }
+}
+
 footer{
     background-image: linear-gradient(to bottom, #ffffff, #fbf8fc, #fbf0f7, #fce8ee, #fde1e2, #fddddd, #fed8d7, #fed4d1, #ffd2d6, #ffd0dc, #fecee3, #faceeb);
 }
-
-#preguntas_frecuentes{
-    .categorias{
-        display: grid;
-        grid-template-columns: repeat(1fr);
-        gap: 20px;
-        margin-bottom: 60px;
-        .categoria{
-            cursor: pointer;
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-            font-weight: 700;;
-            border: 2px solid transparent;
-            transition: .3s ease all;
-            &:hover {
-                color: #000;
-                border-color: #d1e9a3;
-            }
-            img {
-                width: 44px;
-                margin-bottom: 10px;
-            }
-        }
-        .activa{
-            border-color: #d1e9a3;
-        }
-    }
-    .preguntas{
-        .contenedor_preguntas{
-            display: none;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            .contenedor_pregunta {
-                background: #fff;
-                padding: 20px;
-                border: 2px solid transparent;
-                border-radius: 10px;
-                overflow: hidden;
-                transition: .1s ease all;
-                cursor: pointer;
-                &:hover {
-                    border-color: #fad8ce;
-                }
-                .pregunta{
-                    font-weight: 700;
-                    font-size: 20px;
-                    line-height: 20px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                }
-                .respuesta {
-                    color: #808080;
-                    line-height: 30px;
-                    max-height: 0;
-                    opacity: 0;
-                    transition: .3s ease all;
-                }
-            }
-        }
-        .activo{
-            display: grid;
-            .activa{
-                .respuesta{
-                    display:grid;
-                    opacity: 1;
-                    margin-top: 20px;
-                }
-            }
-        }
-        
-    }
-}  

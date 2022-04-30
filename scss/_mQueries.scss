@@ -1,0 +1,74 @@
+//-------Tablet-------//
+@media only screen and (max-width: 768px){
+    #desayunos{
+        .row{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+    #tortas{
+        .row{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+    #quienes_somos{
+        #formulario{
+            .carousel{
+                display: grid;
+                align-items: center;
+            }
+
+        }
+    }
+}
+@media only screen and (max-width: 360px){
+    #desayunos,#tortas{
+        .row{
+            grid-template-columns: 1fr;
+            max-width: 90%;
+        }
+    }
+    #quienes_somos{
+        .nosotros{
+            p{
+                width: 100%;
+            }
+        }
+        #formulario{
+            .row{
+                display: flex;
+                flex-direction: column-reverse;
+                grid-template-columns: 1fr;
+                
+                .contacto, .col-7{
+                    display: grid;
+                    justify-content: center;
+                    width: 100%;
+
+                }
+                .carousel{
+                    width: 100%;
+                    margin-bottom: 1rem;
+                }
+    
+            }
+            .titulos{
+                margin-top: 1rem;
+            }
+        }
+    }
+    #iniciar_sesion{
+        display: block;
+        #mi_sesion,#registrarme{
+            display: grid;
+            width: 100%;
+            margin: 0.5rem;
+            margin-bottom: 1rem;
+            #registratme,.btn{
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+}

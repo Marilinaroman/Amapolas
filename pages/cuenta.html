@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contactanos</title>
+    <title>Mi cuenta</title>
     <link rel="shortcut icon" href="./../imagenes/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Fredoka&family=Lora:ital@1&family=Mukta:wght@200&family=Smooch+Sans:wght@600&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="./../css/style.css">
-    <script defer src="./javascript/main.js"></script>
+    <script defer src="./../javascript/main.js"></script>
 </head>
 <body>
     <div  class="container-fluid">
         <header class="sticky-top">
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="./../index.html"><img src="./../imagenes/logo.png" alt="logo" width="178" height="71"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                        <img src="./../imagenes/iconos/menu.png" alt="menu" width="24" height="24">
                     </button>
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -27,10 +27,10 @@
                             <a class="nav-link active" aria-current="page" href="./../index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="nosotros.html">Nosotros</a>
+                            <a class="nav-link" href="./../index.html#desayunos">Desayunos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contacto.html">Contacto</a>
+                            <a class="nav-link" href="./../index.html#tortas">Tortas</a>
                         </li>
                     </ul>
                     <span class="navbar-text">
@@ -44,8 +44,38 @@
                 </div>
             </nav>
         </header>
-        <main>
-    
+        <main class="cuenta">
+            <h1 class="text-center">Mi cuenta</h1>
+            <div id="iniciar_sesion" class="row justify-content-center">
+                <section class="col-4" id="mi_sesion">
+                    <h2> Iniciar sesión</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label" >Correo Electrónico</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" onclick="loguearme()">Iniciar sesión</button>
+                    </form>
+                </section>
+                <section class="col-4" id="registrarme">
+                    <h2>Registrarme</h2>
+                    <form class="mb-3">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email_registro" aria-describedby="emailHelp">
+                            <button type="submit" class="btn btn-primary" onclick="registrarme()">Registrarme</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
         </main>
         <footer class="text-center text-lg-start bg-light text-muted">
             <!-- Seccion de Links  -->
@@ -53,9 +83,9 @@
             <div class="container text-center text-md-start mt-5">
                 <div class="row mt-3">
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <h3 class="text-uppercase fw-bold mb-4">
-                    <i class="fas fa-gem me-3"></i>Amapolas 
+                    <h3 class="text-uppercase fw-bold mb-4">Amapolas 
                     </h3>
+                    <img src="./../imagenes/quienes_somos/pasteleria_4.jpg" class="img-fluid rounded mx-auto" width="200rem" alt="foto de nosotros">
                     <p>
                     Here you can use rows and columns to organize your footer content. Lorem ipsum
                     dolor sit amet, consectetur adipisicing elit.
@@ -71,18 +101,6 @@
                     </p>
                     <p>
                     <a href="./../index.html#tortas" class="text-reset">Tortas</a>
-                    </p>
-                </div>
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h3 class="text-uppercase fw-bold mb-4">
-                    Links
-                    </h3>
-                    <p>
-                    <a href="nosotros.html#quienes_somos" class="text-reset">Quienes somos</a>
-                    </p>
-                    <p>
-                    <a href="nosotros.html#preguntas" class="text-reset">Preguntas frecuentes</a>
                     </p>
                 </div>
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
@@ -110,7 +128,6 @@
             </div>
             <!-- Copyright -->
         </footer>
-
     </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
