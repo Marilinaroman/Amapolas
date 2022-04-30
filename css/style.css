@@ -9,7 +9,7 @@
     display: grid;
     align-items: center; } }
 
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 390px) {
   #desayunos .row, #tortas .row {
     grid-template-columns: 1fr;
     max-width: 90%; }
