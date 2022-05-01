@@ -21,68 +21,85 @@ const producto10 = new producto("10","torta frutal",1500);
 const producto11 = new producto("11","tiramisu",2000);
 const producto12 = new producto("12","torta tradicional",2000);
 
-let compra = prompt("ingrese el numero de su compra");
-let idCompra = "producto"+compra;
-if (idCompra == "producto1"){
-    precio = producto1.idPrecio;
-    cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-    total = precio * cantidad;
-    console.log(total);
-} else if (idCompra == "producto2"){
-    precio = producto2.idPrecio;
-    cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-    total = precio * cantidad;
-    console.log(total);
-} else if (idCompra == "producto3"){
-    precio = producto3.idPrecio;
-    cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-    total = precio * cantidad;
-    console.log(total);
-} else if (idCompra == "producto4"){
-    precio = producto4.idPrecio;
-    cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-    total = precio * cantidad;
-    console.log(total);
-} else if (idCompra == "producto5"){
-    precio = producto5.idPrecio;
-    cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-    total = precio * cantidad;
-    console.log(total);
-} else if (idCompra == "producto6"){
-    precio = producto6.idPrecio;
-    cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-    total = precio * cantidad;
-    console.log(total);
-} else if (idCompra == "producto7"){
-    precio = producto7.idPrecio;
-    cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-    total = precio * cantidad;
-    console.log(total);
-} else if (idCompra == "producto8"){
-    precio = producto8.idPrecio;
-    cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-    total = precio * cantidad;
-    console.log(total);
-} else if (idCompra == "producto9"){
-    precio = producto9.idPrecio;
-    cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-    total = precio * cantidad;
-    console.log(total);
-} else if (idCompra == "producto10"){
-    precio = producto10.idPrecio;
-    cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-    total = precio * cantidad;
-    console.log(total);
-} else if (idCompra == "producto11"){
-    precio = producto11.idPrecio;
-    cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-    total = precio * cantidad;
-    console.log(total);
-} else if (idCompra == "producto12"){
-    precio = producto12.idPrecio;
-    cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-    total = precio * cantidad;
-    console.log(total);
-} else {
-    alert("No tenemos ese producto")
+function hacerPedido(){
+
+    function pedido (){
+        let compra = prompt("ingrese el codigo del producto que desea comprar");
+        let idCompra = "producto"+compra;
+        if (idCompra == "producto1"){
+            precio = producto1.idPrecio;
+            cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+            total = precio * cantidad;
+            //console.log(total);
+        } else if (idCompra == "producto2"){
+            precio = producto2.idPrecio;
+            cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+            total = precio * cantidad;
+            //console.log(total);
+        } else if (idCompra == "producto3"){
+            precio = producto3.idPrecio;
+            cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+            total = precio * cantidad;
+           // console.log(total);
+        } else if (idCompra == "producto4"){
+            precio = producto4.idPrecio;
+            cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+            total = precio * cantidad;
+            //console.log(total);
+        } else if (idCompra == "producto5"){
+            precio = producto5.idPrecio;
+            cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+            total = precio * cantidad;
+            //console.log(total);
+        } else if (idCompra == "producto6"){
+            precio = producto6.idPrecio;
+            cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+            total = precio * cantidad;
+            //console.log(total);
+        } else if (idCompra == "producto7"){
+            precio = producto7.idPrecio;
+            cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+            total = precio * cantidad;
+            //console.log(total);
+        } else if (idCompra == "producto8"){
+            precio = producto8.idPrecio;
+            cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+            total = precio * cantidad;
+            //console.log(total);
+        } else if (idCompra == "producto9"){
+            precio = producto9.idPrecio;
+            cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+            total = precio * cantidad;
+           // console.log(total);
+        } else if (idCompra == "producto10"){
+            precio = producto10.idPrecio;
+            cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+            total = precio * cantidad;
+            //console.log(total);
+        } else if (idCompra == "producto11"){
+            precio = producto11.idPrecio;
+            cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+            //total = precio * cantidad;
+            console.log(total);
+        } else if (idCompra == "producto12"){
+            precio = producto12.idPrecio;
+            cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
+            total = precio * cantidad;
+            //console.log(total);
+        } else {
+            alert("No tenemos ese producto")
+        }
+    }
+    let continuarComprando = "";
+    let totalFinal = 0;
+    let iva = 0;
+    do{
+        pedido();
+        continuarComprando = prompt("desea continuar comprando? si/no");
+        totalFinal = total + totalFinal;
+        iva = totalFinal * 0.21
+        console.log((totalFinal + iva));
+        
+    } while (continuarComprando == "si")
+    alert( "El total de su pedido más IVA es de $" + (totalFinal + iva))
 }
