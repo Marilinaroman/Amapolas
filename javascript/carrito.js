@@ -138,7 +138,7 @@ let codigoDescuento = "";
     };
     function descuento(){
         codigoDescuento = prompt("Ingrese su codigo de descuento");
-        if (codigoDescuento == "AMAPOLASOFF"){
+        if (codigoDescuento.toUpperCase() == "AMAPOLASOFF"){
             porcentajeDescuento = 0.20;
             alert ("Se aplico el descuento")
         } else {
@@ -159,14 +159,17 @@ function hacerPedido(){
         totalIva = totalFinal + iva;
         console.log(totalIva);
         
-    } while (continuarComprando == "si"|| continuarComprando == "Si" || continuarComprando == "SI");
+    } while (continuarComprando.toUpperCase() == "SI");
     
     alert( "El total de su pedido más IVA es de $" + totalIva);
     
-    calculoEnvio();
-    descuento();
-
-    importeACobrar = totalIva - (totalIva * porcentajeDescuento) + costoEnvio;
+    if ( totalIva != 0){
+        calculoEnvio();
+        descuento();
     
-    alert("El importe a abonar es: " + importeACobrar)
+        importeACobrar = totalIva - (totalIva * porcentajeDescuento) + costoEnvio;
+        
+        alert("El importe a abonar es: " + importeACobrar)
+
+    }
 }
