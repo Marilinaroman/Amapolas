@@ -15,6 +15,6 @@ function loguearme(){
 	if (miEmail != "" && miContraseña == ""){
 		alert("Debes ingresar tu email y contraseña");
 	} else {
-		alert("El nombre de usuario o la contraseña que ingresaste son incorrectos.")
+		alert("El nombre de usuario y/o la contraseña que ingresaste son incorrectos.")
 	}
 }
