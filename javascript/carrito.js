@@ -25,48 +25,50 @@ const productos = [
     { id: 10, producto: "torta frutal", idPrecio: 1500 },
     { id: 11, producto: "tiramisu", idPrecio: 2000 },
     { id: 12, producto: "torta tradicional", idPrecio: 2000 },
-]
+];
 
 const envio = [
     {idZonaEnvio: 1, precioEnvio: 0, descripcionEnvio: "CABA"},
     {idZonaEnvio: 2, precioEnvio: 400, descripcionEnvio: "Zona Norte"},
     {idZonaEnvio: 3, precioEnvio: 450, descripcionEnvio: "Zona Sur"},
     {idZonaEnvio: 4, precioEnvio: 500, descripcionEnvio: "Zona Oeste"}
-]
-
+];
 
 const arrayPedido = [];
 
 class detallePedido {
     constructor(productoPedido, cantidadPedido, precioPedido) {
-
         this.productoPedido = productoPedido;
         this.precioPedido = precioPedido;
         this.cantidadPedido = cantidadPedido;
     };
-}
+};
 
-function pedido() {
+const pedido = () => {
     let idCompra = parseInt(prompt("ingrese el codigo del producto que desea comprar"));
     let buscarProducto = productos.find((buscaProducto) => buscaProducto.id === idCompra);
 
     if (buscarProducto != undefined) {
         let precio = buscarProducto.idPrecio;
         cantidad = parseInt(prompt("Ingrese la cantidad que desea comprar"));
-        total = precio * cantidad;
+        
+        if (isNaN(cantidad)){
+        return cantidad = 0;
+        };
 
         productoPedido = buscarProducto.producto;
         cantidadPedido = cantidad;
         precioPedido = precio;
+
         nuevoPedido = arrayPedido.push(new detallePedido(productoPedido, cantidadPedido, precioPedido));
 
     } else {
-        alert("No tenemos ese producto")
+        alert("No tenemos ese producto");
         total = 0;
     }
-    }
+}
 
-function calculoEnvio() {
+const calculoEnvio  = () => {
     opcion = parseInt(prompt("Seleccione una opcion: " +
         "\n1- Retiro en Tienda" +
         "\n2- Envio a domicilio"));
@@ -82,21 +84,21 @@ function calculoEnvio() {
         "\n4- Zona Oeste"));
         let buscarZona = envio.find((buscaEnvio) => buscaEnvio.idZonaEnvio === zonaEnvio);
         if (buscarZona != undefined) {
-        costoEnvio = buscarZona.precioEnvio;
-        zona = buscarZona.descripcionEnvio;
-        alert("El costo de envio a " + zona + " es de $" + buscarZona.precioEnvio);
+            costoEnvio = buscarZona.precioEnvio;
+            zona = buscarZona.descripcionEnvio;
+            alert("El costo de envio a " + zona + " es de $" + buscarZona.precioEnvio);
         } else {
-        alert("La opcion ingresada no es valida");
+            alert("La opcion ingresada no es valida");
         } return costoEnvio;
     };
-    }
+}
 
-function descuento() {
+const descuento = () => {
     codigoDescuento = prompt("Ingrese su codigo de descuento");
     if (codigoDescuento.toUpperCase() == "AMAPOLASOFF") {
         porcentajeDescuento = 0.20;
-        mensajeDescuento = "Se aplico el descuento del 20% sobre la compra"
-        alert(mensajeDescuento)
+        mensajeDescuento = "Se aplico el descuento del 20% sobre la compra";
+        alert(mensajeDescuento);
     } else {
         porcentajeDescuento = 0;
         mensajeDescuento = "";
@@ -104,36 +106,34 @@ function descuento() {
     }
 }
 
-function hacerPedido() {
+const hacerPedido = () => {
+
     let continuarComprando = "";
-    let iva = 0;
     do {
         pedido();
         continuarComprando = prompt("desea continuar comprando? si/no");
-        totalFinal = total + totalFinal;
-        iva = totalFinal * 0.21;
-        totalIva = totalFinal + iva;
-        console.log(totalIva);
-
     } while (continuarComprando.toUpperCase() == "SI");
 
-    alert("El total de su pedido más IVA es de $" + totalIva);
+    arrayPedido.forEach(detallePedido=> {
+        total= (detallePedido.precioPedido * detallePedido.cantidadPedido)*1.21;
+        totalIva += total;
+    });
+
+    alert(`El total de su pedido más IVA es de $${totalIva}`);
 
     if (totalIva != 0) {
         calculoEnvio();
         descuento();
 
         importeACobrar = totalIva - (totalIva * porcentajeDescuento) + costoEnvio;
-        
+
         arrayPedido.forEach(detallePedido=> {
-            mensaje= "Producto: " + detallePedido.productoPedido + " Precio: " +     detallePedido.precioPedido + " Cantidad: " + detallePedido.cantidadPedido;
+            mensaje= `Producto: ${detallePedido.productoPedido} - Precio: $${detallePedido.precioPedido} - Cantidad: ${detallePedido.cantidadPedido}`
             ticket += mensaje + "\n";
         });
-        alert("Detalle del pedido realizado: " + "\n" + ticket + "\n" +
-                "Total de su pedido más IVA es de $" + totalIva + "\n" +
-                mensajeDescuento + "\n" + 
-                "Envio: " + zona + " $" +  costoEnvio + "\n" + 
-                "El importe total a abonar es de $ " + importeACobrar)
+
+        alert(`Detalle del pedido realizado: \n${ticket} \nTotal de su pedido más IVA es de $${totalIva}\n${mensajeDescuento}\nEnvio: ${zona} $${costoEnvio}\nEl importe total a abonar es de $${importeACobrar}`);
         
     }
+    
 }
