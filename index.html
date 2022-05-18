@@ -11,6 +11,8 @@
     <link rel="shortcut icon" href="./imagenes/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
     <script defer src="./javascript/main.js"></script>
+    <script defer src="./javascript/carrito.js"></script>
+    <script defer src="./javascript/compra.js"></script>
 </head>
 <body>
     <div  class="container-fluid">
@@ -38,6 +40,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="./pages/cuenta.html">Ingresar</a>
                             </li>
+                            <li><a class="nav-link" href="./pages/carrito_compra.html">Finalizar compra</a></li>
                         </ul>
                     </span>
                     </div>
@@ -54,25 +57,25 @@
                         <div class="card col producto">
                             <img src="./imagenes/desayunos/banana_split_unidad.jpg" class="card-img-top rounded mx-auto" alt="foto muffin banana split">
                             <div class="card-body">
-                                <p class="card-title">Card title</p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="./pages/carrito_compra.html" class="btn">Comprar</a>
+                                <p class="card-title text-uppercase">banana split</p>
+                                <p class="card-text">$100</p>
+                                <button class="btn boton_compra" data-id-product= "1" id="">Comprar</button>
                             </div>
                         </div>
                         <div class="card col producto">
                             <img src="./imagenes/desayunos/lemon_pie_unidad.jpg" class="card-img-top rounded mx-auto" alt="foto muffin lemon pie">
                             <div class="card-body">
-                                <p class="card-title">Card title</p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="./pages/carrito_compra.html" class="btn">Comprar</a>
+                                <p class="card-title text-uppercase">lemon pie</p>
+                                <p class="card-text">$110</p>
+                                <button class="btn boton_compra" data-id-product= "2" >Comprar</button>
                             </div>
                         </div>
                         <div class="card col producto">
                             <img src="./imagenes/desayunos/trufas.jpg" class="card-img-top rounded mx-auto" alt="foto trufas">
                             <div class="card-body">
-                                <p class="card-title">Card title</p>>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="./pages/carrito_compra.html" class="btn">Comprar</a>
+                                <p class="card-title text-uppercase">trufas</p>
+                                <p class="card-text">$100</p>
+                                <button class="btn" data-id-product= "3" id="boton_compra">Comprar</button>
                             </div>
                         </div>
                     </div>
@@ -80,25 +83,25 @@
                         <div class="card col producto">
                             <img src="./imagenes/desayunos/mini_brownie.jpg" class="card-img-top rounded mx-auto" alt="foto mini brownie">
                                 <div class="card-body">
-                                    <p class="card-title">Card title</p>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="./pages/carrito_compra.html" class="btn btn-primary">Comprar</a>
+                                    <p class="card-title text-uppercase">mini brownie</p>
+                                    <p class="card-text">$120</p>
+                                    <button class="btn" data-id-product= "4" id="boton_compra">Comprar</button>
                                 </div>
                         </div>
                         <div class="card col producto">
                                 <img src="./imagenes/desayunos/mini_tarta_del_bosque.jpg" class="card-img-top rounded mx-auto" alt="foto mini tarta del bosque">
                                 <div class="card-body">
-                                    <p class="card-title">Card title</p>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="./pages/carrito_compra.html" class="btn btn-primary">Comprar</a>
+                                    <p class="card-title text-uppercase">mini tarta del bosque</p>
+                                    <p class="card-text">$140</p>
+                                    <button class="btn" data-id-product= "5" id="boton_compra">Comprar</button>
                                 </div>
                         </div>
                         <div class="card col producto">
                             <img src="./imagenes/desayunos/mini_tiramisu.jpg" class="card-img-top rounded mx-auto" alt="foto mini tiramisu">
                                 <div class="card-body">
-                                    <p class="card-title">Card title</p>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="./pages/carrito_compra.html" class="btn btn-primary">Comprar</a>
+                                    <p class="card-title text-uppercase">mini tiramisu</p>
+                                    <p class="card-text">$140</p>
+                                    <button class="btn" data-id-product= "6" id="boton_compra">Comprar</button>
                                 </div>
                         </div>
                     </div>
@@ -110,25 +113,25 @@
                         <div class="card col producto">
                             <img src="./imagenes/tortas/cheesecake.jpg" class="card-img-top rounded mx-auto" alt="foto cheesecake">
                             <div class="card-body">
-                                <p class="card-title">Card title</p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="./pages/carrito_compra.html" class="btn">Comprar</a>
+                                <p class="card-title text-uppercase">cheescake</p>
+                                <p class="card-text">$1.000</p>
+                                <button class="btn" data-id-product= "7" id="boton_compra">Comprar</button>
                                 </div>
                             </div>
                             <div class="card col producto">
                                 <img src="./imagenes/tortas/chocotorta.jpg" class="card-img-top rounded mx-auto" alt="foto chocotorta">
-                                <div class="card-body">
-                                    <p class="card-title">Card title</p>>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="./pages/carrito_compra.html" class="btn">Comprar</a>
+                                <div class="card-body ">
+                                    <p class="card-title text-uppercase">chocotorta</p>
+                                <p class="card-text">$1.080</p>
+                                <button class="btn" data-id-product= "8" id="boton_compra">Comprar</button>
                                 </div>
                             </div>
                             <div class="card col producto">
                                 <img src="./imagenes/tortas/lemon_pie.jpg" class="card-img-top rounded mx-auto" alt="foto lemon pie">
                                 <div class="card-body">
-                                <p class="card-title">Card title</p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="./pages/carrito_compra.html" class="btn">Comprar</a>
+                                <p class="card-title text-uppercase">lemon pie</p>
+                                <p class="card-text">$1.200</p>
+                                <button class="btn" data-id-product= "9" id="boton_compra">Comprar</button>
                                 </div>
                             </div>
                         </div>
@@ -138,29 +141,29 @@
                             <div class="card col producto">
                                 <img src="./imagenes/tortas/torta_frutal.jpg" class="card-img-top rounded mx-auto" alt="foto torta frutal">
                                 <div class="card-body">
-                                <p class="card-title">Card title</p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="./pages/carrito_compra.html" class="btn">Comprar</a>
+                                <p class="card-title text-uppercase">torta frutal</p>
+                                <p class="card-text">$1.500</p>
+                                <button class="btn" data-id-product= "10" id="boton_compra">Comprar</button>
                                 </div>
                             </div>
                             <div class="card col producto">
                                 <img src="./imagenes/tortas/tiramisu.jpg" class="card-img-top rounded mx-auto" alt="foto tiramisu">
                                 <div class="card-body">
-                                <p class="card-title">Card title</p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="./pages/carrito_compra.html" class="btn">Comprar</a>
+                                <p class="card-title text-uppercase">tiramisu</p>
+                                <p class="card-text">$2.000</p>
+                                <button class="btn" data-id-product= "11" id="boton_compra">Comprar</button>
                                 </div>
                             </div>
                             <div class="card col producto">
                                 <img src="./imagenes/tortas/torta_tradicional.jpg" class="card-img-top rounded mx-auto" alt="foto torta tradicional">
-                                <div class="card-body">
-                                <p class="card-title">Card title</p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="./pages/carrito_compra.html" class="btn">Comprar</a>
+                                <div class="card-body text-uppercase">
+                                <p class="card-title">torta tradicional</p>
+                                <p class="card-text">$2.000</p>
+                                <button class="btn" data-id-product= "12" id="boton_compra">Comprar</button>
                                 </div>
                             </div>
                         </div>
-                    </div>  
+                    </div>
             </section>
             <section id="quienes_somos">
                 <h3 class="titulos text-center">Nosotros</h3>

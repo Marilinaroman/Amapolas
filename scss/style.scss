@@ -50,7 +50,6 @@ nav{
     }
 }
 .cuenta{
-    height: 35rem;
     h1{
         margin-bottom: 3rem;
     }
@@ -59,3 +58,57 @@ nav{
 footer{
     background-image: linear-gradient(to bottom, #ffffff, #fbf8fc, #fbf0f7, #fce8ee, #fde1e2, #fddddd, #fed8d7, #fed4d1, #ffd2d6, #ffd0dc, #fecee3, #faceeb);
 }
+
+.categorias{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 60px;
+    .categoria{
+        cursor: pointer;
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        font-weight: 700;;
+        border: 2px solid transparent;
+        transition: .3s ease all;
+        &:hover {
+            color: #000;
+        }
+        img {
+            width: 44px;
+            margin-bottom: 10px;
+        }
+    }
+    .activa{
+        border-color: #faceeb;
+    }
+}
+.contenido{
+    .contenido_categorias{
+        display: none;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        .contenido_categoria {
+            background: #fff;
+            padding: 20px;
+            overflow: hidden;
+            transition: .3s ease all;
+            cursor: pointer;
+            &:hover {
+                border: 5rem;
+            }
+            select{
+                margin: 1rem;
+            }
+            .envio_domicilio{
+                display: none;
+            }
+        }
+    }
+    .activo{
+        display: grid;
+        
+    }
+    
+}  

@@ -10,7 +10,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="./../css/style.css">
-    <script defer src="./../javascript/carrito.js"></script>
+    <script defer src="./../javascript/vistaCarrito.js"></script>
+    <script defer src="./../javascript/compra.js"></script>
 </head>
 <body>
     <div  class="container-fluid">
@@ -45,45 +46,90 @@
             </nav>
         </header>
         <main class="cuenta">
-            <h1 class="text-center">Mi compra</h1>
+            <h1 class="text-center">¡Bienvenida/o!</h1>
             <h2 class="text-center">¡¡¡Solo por HOY te regalamos un 20% OFF con el codigo AMAPOLASOFF!!!</h2>
-            <div class="row">
-                <div class="col-8">
-                    <p>Lista de productos</p>
-                    <ol >
-                        <il>1 - banana split por unidad</il>
-                        <li>2 - lemon pie por unidad</il>
-                        <li>3 - trufas por unidad</li>
-                        <li>4 - mini brownie por unidad</li>
-                        <li>5 - mini tarta del bosque por unidad</li>
-                        <li>6 - mini tiramisu por unidad</li>
-                        <li>7 - cheescake</li>
-                        <li>8 - chocotorta</li>
-                        <li>9 - lemon pie</li>
-                        <li>10 - torta frutal</li>
-                        <li>11 - tiramisu</li>
-                        <li>12 - torta tradicional</li>
-                    </ol>
-                </div>
-                <div class="col-4">
-                    <p>Precio sin IVA</p>
-                    <ol>
-                        <li>$100</li>
-                        <li>$110</li>
-                        <li>$100</li>
-                        <li>$120</li>
-                        <li>$140</li>
-                        <li>$140</li>
-                        <li>$1000</li>
-                        <li>$1080</li>
-                        <li>$1200</li>
-                        <li>$1500</li>
-                        <li>$2000</li>
-                        <li>$2000</li>
-                    </ol>
-                </div>
-                <button class="btn btn-primary btn-lg" onclick="hacerPedido()">comprar</button>
-                
+                <section id="carrito_compra">
+                    <div class="categorias" id="categorias">
+                        <div class="categoria activa" data-categoria="mi_pedido">
+                            <img src="./../imagenes/iconos/carrito.png" width="30" height="30" alt="Mostrar pedido">
+                            <p>Mi Pedido</p>
+                        </div>
+                        <div class="categoria" data-categoria="envio">
+                            <img src="./../imagenes/iconos/envio.png" alt="Mostrar opciones de envio" width="30" height="30" >
+                            <p>Envío</p>
+                        </div>
+                        <div class="categoria" data-categoria="pago">
+                            <img src="./../imagenes/iconos/pago.png" alt="Mostrar opciones de pago" width="30" height="30" >
+                            <p>Métodos de pago</p>
+                        </div>
+                    </div>
+    
+                    <div class="contenido">
+                        <div  class="contenido_categorias activo" data-categoria="mi_pedido">
+                            <div class="contenido_categoria activa " id="detalle_mi_pedido">
+                            </div>
+                        </div>
+    
+                        <div class="contenido_categorias" data-categoria="envio">
+                            <div  class="contenido_categoria">
+                                <select class="form-select opciones_envio" aria-label="Default select example">
+                                    <option selected>Opciones de Envío</option>
+                                    <option value="1">Retiro en Tienda</option>
+                                    <option value="2">Envio a domicilio</option>
+                                </select>
+                                <select class="form-select envio_domicilio active aria-label="Default select example">
+                                    <option selected>Seleccionar Zona</option>
+                                    <option value="1">CABA</option>
+                                    <option value="2">Zona Norte</option>
+                                    <option value="3">Zona Sur</option>
+                                    <option value="3">Zona OEste</option>
+                                </select>
+                            </div>
+                        </div>
+    
+                        <div class="contenido_categorias" data-categoria="pago">
+                            <div  class="contenido_categoria">
+                                <div class="container p-0">
+                                    <div class="card px-4">
+                                        <p class="h8 py-3">Metodo de pago</p>
+                                        <div class="row gx-3">
+                                            <div class="col-12">
+                                                <div class="d-flex flex-column">
+                                                    <p class="text mb-1">Nombre</p>
+                                                    <input class="form-control mb-3" type="text" placeholder="Nombre que figura en la tarjeta">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="d-flex flex-column">
+                                                    <p class="text mb-1">Número de Tarjeta</p>
+                                                    <input class="form-control mb-3" type="text" placeholder="1234 5678 435678">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="d-flex flex-column">
+                                                    <p class="text mb-1">Fecha de Expiración</p>
+                                                    <input class="form-control mb-3" type="text" placeholder="MM/YYYY">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="d-flex flex-column">
+                                                    <p class="text mb-1">CVV/CVC</p>
+                                                    <input class="form-control mb-3 pt-2 " type="password" placeholder="***">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="btn btn-primary mb-3">
+                                                    <span class="ps-3">Pagar</span>
+                                                    <span class="fas fa-arrow-right"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div
+                            </div>
+                        </div>
+                    </div>
+                </section>
         </main>
         <footer class="text-center text-lg-start bg-light text-muted">
             <!-- Seccion de Links  -->

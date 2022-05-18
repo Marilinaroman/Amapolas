@@ -1,5 +1,5 @@
-// Declaro variables
-
+ //Declaro variables
+/*
 let costoEnvio = 0;
 let opcion = "";
 let totalFinal = 0;
@@ -10,6 +10,8 @@ let codigoDescuento = "";
 let nuevoPedido;
 let ticket = "";
 let zona = "";
+let idCompra;
+let buscarProducto;
 
 // Genero array de productos
 const productos = [
@@ -41,11 +43,10 @@ class detallePedido {
         this.productoPedido = productoPedido;
         this.precioPedido = precioPedido;
         this.cantidadPedido = cantidadPedido;
-    };
+      };
 };
 
 const pedido = () => {
-    let idCompra = parseInt(prompt("ingrese el codigo del producto que desea comprar"));
     let buscarProducto = productos.find((buscaProducto) => buscaProducto.id === idCompra);
 
     if (buscarProducto != undefined) {
@@ -128,12 +129,14 @@ const hacerPedido = () => {
         importeACobrar = totalIva - (totalIva * porcentajeDescuento) + costoEnvio;
 
         arrayPedido.forEach(detallePedido=> {
-            mensaje= `Producto: ${detallePedido.productoPedido} - Precio: $${detallePedido.precioPedido} - Cantidad: ${detallePedido.cantidadPedido}`
-            ticket += mensaje + "\n";
+            let contenedor = document.createElement("div");
+            contenedor.innerHTML = `<h3> Detalle del Pedido</h3>
+            <p> Producto: ${detallePedido.productoPedido} - Precio: $${detallePedido.precioPedido} - Cantidad: ${detallePedido.cantidadPedido}</p>`
+            detalle_mi_pedido.appendChild(contenedor)
         });
 
         alert(`Detalle del pedido realizado: \n${ticket} \nTotal de su pedido más IVA es de $${totalIva}\n${mensajeDescuento}\nEnvio: ${zona} $${costoEnvio}\nEl importe total a abonar es de $${importeACobrar}`);
         
     }
     
-}
+}*/
