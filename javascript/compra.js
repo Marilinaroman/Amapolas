@@ -1,6 +1,6 @@
 // Declaro variables
 
-let costoEnvio = 0;
+//let costoEnvio = 0;
 let opcion = "";
 let totalFinal = 0;
 let total = 0;
@@ -50,6 +50,7 @@ class detallePedido {
 
 const guardoLS = () =>{
     localStorage.setItem('listaProductos', JSON.stringify(arrayPedido));
+
 }
 
 const recuperoLS = () => {
@@ -67,8 +68,6 @@ const recuperoLS = () => {
     })
 }
 
-
-
 const botonCompra = document.querySelectorAll("button[data-id-product]")
 
 botonCompra.forEach(button =>{
@@ -78,7 +77,9 @@ botonCompra.forEach(button =>{
         precioPedido = buscarProducto.idPrecio;
         productoPedido = buscarProducto.producto;
         cantidadPedido = 1;
+        
         arrayPedido.push(new detallePedido(productoPedido, cantidadPedido, precioPedido))
+        
         guardoLS()
         
         return arrayPedido;
@@ -90,18 +91,19 @@ botonCompra.forEach(button =>{
 
 console.log(arrayPedido)
 
-
-
 let mensaje;
 
 recuperoLS()
 
 
+
 let detalleMiPedido = document.querySelector("#detalle_mi_pedido")
 if (carritoFinal != undefined){
+    
     for (const detallePedido of carritoFinal) {
-        
-        mensaje = `<li> ${detallePedido.productoPedido.toUpperCase()} $${detallePedido.precioPedido} - Cantidad: ${detallePedido.cantidadPedido}</li>`;
+        totalParcial= (detallePedido.precioPedido * detallePedido.cantidadPedido);
+        total +=totalParcial
+        mensaje = `<li> ${detallePedido.productoPedido.toUpperCase()} $${detallePedido.precioPedido} - Cantidad: ${detallePedido.cantidadPedido} - Total: $${totalParcial}</li>`;
         let contenedor = document.createElement("div")
         contenedor.innerHTML = mensaje;
     
@@ -110,6 +112,8 @@ if (carritoFinal != undefined){
     }
 
 }
+
+
 
 
 

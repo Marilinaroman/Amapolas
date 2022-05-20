@@ -29,16 +29,32 @@ categorias.forEach((categoria) => {
 // Envio
 const opcionesEnvio = document.querySelector('.opciones_envio');
 const envioDomicilio = document.querySelector('.envio_domicilio')
+let muestraEnvio = document.querySelector('#precio_envio')
+let costoEnvio;
 
 opcionesEnvio.addEventListener('change', () =>{
 	let seleccion = opcionesEnvio.selectedIndex;
 	
 	if (seleccion == 2){
 		envioDomicilio.style.display="block";
+	} else {
+		envioDomicilio.style.display="none";
 	}
 })
 
+envioDomicilio.addEventListener('change', () =>{
 
 
+	let zonaEnvio = envioDomicilio.selectedIndex;
+	let buscarZona = envio.find((buscaEnvio) => buscaEnvio.idZonaEnvio === zonaEnvio);
+	costoEnvio = buscarZona.precioEnvio;
+    zona = buscarZona.descripcionEnvio;
+    let totalFinal = costoEnvio + total;
 	
-console.log(opcionesEnvio)
+	let mensajeEnvio = `<li> Envio a ${zona} $${costoEnvio}</li> <br>
+						<li> Total = $${totalFinal}`
+	let contenedorEnvio = document.createElement("div")
+	contenedorEnvio.innerHTML = mensajeEnvio;
+	muestraEnvio.appendChild(contenedorEnvio)
+	
+})
