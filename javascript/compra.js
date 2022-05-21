@@ -1,10 +1,9 @@
 // Declaro variables
 
-//let costoEnvio = 0;
+let mensaje;
 let opcion = "";
 let totalFinal = 0;
 let total = 0;
-let totalIva = 0;
 let importeACobrar = 0;
 let codigoDescuento = "";
 let nuevoPedido;
@@ -29,12 +28,6 @@ const productos = [
     { id: 12, producto: "torta tradicional", idPrecio: 2000 },
 ];
 
-const envio = [
-    {idZonaEnvio: 1, precioEnvio: 0, descripcionEnvio: "CABA"},
-    {idZonaEnvio: 2, precioEnvio: 400, descripcionEnvio: "Zona Norte"},
-    {idZonaEnvio: 3, precioEnvio: 450, descripcionEnvio: "Zona Sur"},
-    {idZonaEnvio: 4, precioEnvio: 500, descripcionEnvio: "Zona Oeste"}
-];
 
 const carrito = [];
 const carritoFinal = [];
@@ -48,11 +41,13 @@ class detallePedido {
     };
 };
 
+// Guardo el array en el LS
 const guardoLS = () =>{
     localStorage.setItem('listaProductos', JSON.stringify(arrayPedido));
 
 }
 
+// Recupero el array del LS y los guardo en un nuevo array
 const recuperoLS = () => {
     const almacenados = JSON.parse(localStorage.getItem("listaProductos"));
     carrito.push(almacenados);
@@ -70,6 +65,7 @@ const recuperoLS = () => {
 
 const botonCompra = document.querySelectorAll("button[data-id-product]")
 
+// con cada boton de compra alimento el array de pedidos
 botonCompra.forEach(button =>{
         button.addEventListener("click", ()=>{
         idCompra = button.getAttribute('data-id-product')
@@ -91,27 +87,61 @@ botonCompra.forEach(button =>{
 
 console.log(arrayPedido)
 
-let mensaje;
+// Envio
+const opcionesEnvio = document.querySelector('.opciones_envio');
+const envioDomicilio = document.querySelector('.envio_domicilio')
+let valorEnvio = 0;
+let seleccion;
+let seleccionDomicilio;
+
+function opcionDomicilio(){
+    seleccionDomicilio = envioDomicilio.value;
+    return seleccionDomicilio
+
+}
+
+console.log(seleccionDomicilio)
+function opcionEnvio(){
+	seleccion = opcionesEnvio.options[opcionesEnvio.selectedIndex].value;
+		
+	if (seleccion == "2"){
+        envioDomicilio.style.display="block";
+		
+	} else{
+		envioDomicilio.style.display="none";
+    }
+}
+
 
 recuperoLS()
 
 
+let detalleMiPedido = document.querySelector("#detalle_mi_pedido");
 
-let detalleMiPedido = document.querySelector("#detalle_mi_pedido")
+console.log(carritoFinal);
+
+// Muestro los productos seleccionados en carrito_compra.html
 if (carritoFinal != undefined){
-    
     for (const detallePedido of carritoFinal) {
-        totalParcial= (detallePedido.precioPedido * detallePedido.cantidadPedido);
-        total +=totalParcial
-        mensaje = `<li> ${detallePedido.productoPedido.toUpperCase()} $${detallePedido.precioPedido} - Cantidad: ${detallePedido.cantidadPedido} - Total: $${totalParcial}</li>`;
-        let contenedor = document.createElement("div")
+        total= (detallePedido.precioPedido * detallePedido.cantidadPedido);
+        totalFinal +=total;
+        mensaje = `<li> ${detallePedido.productoPedido.toUpperCase()} $${detallePedido.precioPedido}
+                    Cantidad: ${detallePedido.cantidadPedido}
+                    Total: ${total}</li>`;
+        let contenedor = document.createElement("div");
         contenedor.innerHTML = mensaje;
-    
-        
-        detalleMiPedido.appendChild(contenedor)
+        detalleMiPedido.appendChild(contenedor);
     }
-
+    
+    let verTotal = document.querySelector("#ver_total");
+    let contenedorTotal = document.createElement("div");
+    let totalHtml = `<p> Total: ${totalFinal}`
+    contenedorTotal.innerHTML = totalHtml;
+    verTotal.appendChild(contenedorTotal);
 }
+
+
+
 
 
 

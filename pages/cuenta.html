@@ -49,29 +49,36 @@
             <div id="iniciar_sesion" class="row justify-content-center">
                 <section class="col-4" id="mi_sesion">
                     <h2> Iniciar sesión</h2>
-                    <form>
+                    <form id="consulta_clientes">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label" >Correo Electrónico</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="email" class="form-control" id="email_registrado" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                            <input type="password" class="form-control" id="consulta_contraseña">
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Recordarme</label>
                         </div>
                         <button type="submit" class="btn btn-primary" onclick="loguearme()">Iniciar sesión</button>
+                        <P id="mensaje_validacion"></p>
                     </form>
                 </section>
                 <section class="col-4" id="registrarme">
                     <h2>Registrarme</h2>
-                    <form class="mb-3">
+                    <form id="alta_clientes" class="mb-3">
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
+                            <label for="exampleInputEmail1" class="form-label" >Correo Electrónico</label>
                             <input type="email" class="form-control" id="email_registro" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="contraseña">
+                        </div>
                             <button type="submit" class="btn btn-primary" onclick="registrarme()">Registrarme</button>
+                            <p id="mensaje_registro"></p>
                         </div>
                     </form>
                 </section>
@@ -126,7 +133,6 @@
             <div class="text-center p-4">
             © 2022 Copyright: Amapolas S.R.L.
             </div>
-            <!-- Copyright -->
         </footer>
     </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->

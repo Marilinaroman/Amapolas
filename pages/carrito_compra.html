@@ -72,19 +72,20 @@
     
                         <div class="contenido_categorias" data-categoria="envio">
                             <div  class="contenido_categoria">
-                                <select class="form-select opciones_envio" aria-label="Default select example">
+                                <select class="form-select opciones_envio" aria-label="Default select example" onchange="opcionEnvio()">
                                     <option selected>Opciones de Envío</option>
-                                    <option value="1">Retiro en Tienda - Gratis</option>
+                                    <option value="0">Retiro en Tienda - Gratis</option>
                                     <option value="2">Envio a domicilio</option>
                                 </select>
-                                <select class="form-select envio_domicilio active aria-label="Default select example">
+                                <select class="form-select envio_domicilio active" aria-label="Default select example" onchange="opcionDomicilio()">
                                     <option selected>Seleccionar Zona</option>
-                                    <option value="1">CABA - Gratis</option>
-                                    <option value="2">Zona Norte - $400</option>
-                                    <option value="3">Zona Sur - $450</option>
-                                    <option value="3">Zona Oeste - $500</option>
+                                    <option value="0" data-categoria="0">CABA - Gratis</option>
+                                    <option value="400" data-categoria="400">Zona Norte - $400</option>
+                                    <option value="450" data-categoria="450">Zona Sur - $450</option>
+                                    <option value="500" data-categoria="500">Zona Oeste - $500</option>
                                 </select>
-                                <div id="precio_envio"></div>
+                                <div id="ver_total">
+                                </div>
                             </div>
                         </div>
     
@@ -181,7 +182,7 @@
             <div class="text-center p-4">
             © 2022 Copyright: Amapolas S.R.L.
             </div>
-            <!-- Copyright -->
+            
         </footer>
     </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
