@@ -52,7 +52,7 @@ const recuperoLS = () => {
     const almacenados = JSON.parse(localStorage.getItem("listaProductos"));
     carrito.push(almacenados);
 
-
+    
     carrito.forEach( element => {
         for ( const objeto of element){
             productoPedido =objeto.productoPedido
@@ -64,17 +64,41 @@ const recuperoLS = () => {
 }
 
 const botonCompra = document.querySelectorAll("button[data-id-product]")
+let consultaPedido =[];
+
+function consultaArrayPedido (){
+
+    if (arrayPedido == ""){
+        cantidadPedido = 1;
+        console.log(arrayPedido)
+        arrayPedido.push(new detallePedido(productoPedido, cantidadPedido, precioPedido))
+        return arrayPedido;
+    } else if((arrayPedido)) {
+        consultaPedido = arrayPedido.find((encontrarProducto) => encontrarProducto.productoPedido == productoPedido)
+        if( consultaPedido == undefined){
+            cantidadPedido = 1;
+            arrayPedido.push(new detallePedido(productoPedido, cantidadPedido, precioPedido))
+            return arrayPedido;
+        } else if(consultaPedido != undefined){
+            cantidadAcum = consultaPedido.cantidadPedido
+            let buscaIndex = arrayPedido.indexOf(consultaPedido)
+            arrayPedido[buscaIndex].cantidadPedido += 1
+            return arrayPedido;
+            }
+        return arrayPedido;
+        }
+}
+    
+
 
 // con cada boton de compra alimento el array de pedidos
 botonCompra.forEach(button =>{
         button.addEventListener("click", ()=>{
         idCompra = button.getAttribute('data-id-product')
         buscarProducto = productos.find((buscaProducto) => buscaProducto.id == idCompra)
-        precioPedido = buscarProducto.idPrecio;
         productoPedido = buscarProducto.producto;
-        cantidadPedido = 1;
-        
-        arrayPedido.push(new detallePedido(productoPedido, cantidadPedido, precioPedido))
+        precioPedido = buscarProducto.idPrecio;
+        consultaArrayPedido()
         
         guardoLS()
         
