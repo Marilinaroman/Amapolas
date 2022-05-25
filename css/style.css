@@ -134,6 +134,9 @@ footer {
       border: 5rem; }
     .contenido .contenido_categorias .contenido_categoria select {
       margin: 1rem; }
+    .contenido .contenido_categorias .contenido_categoria .btn_suma, .contenido .contenido_categorias .contenido_categoria .btn_resta, .contenido .contenido_categorias .contenido_categoria .borrar-producto {
+      border: none;
+      background-color: transparent; }
     .contenido .contenido_categorias .contenido_categoria .envio_domicilio {
       display: none; }
 

@@ -66,7 +66,23 @@
     
                     <div class="contenido">
                         <div  class="contenido_categorias activo" data-categoria="mi_pedido">
-                            <div class="contenido_categoria activa " id="detalle_mi_pedido">
+                            <div class="contenido_categoria activa" id="carrito">
+                                <table class="table table-responsive table-bordered">
+                                    <table class="table table-hover">
+                                                <thead>
+                                                    <tr >
+                                                        <th class="col-4">Producto</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Precio</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                    
+                                                </thead>
+                                                <tbody id="detalle_mi_pedido">
+                                                </tbody>
+                                                <th id="total_productos"></th>
+                                                
+                                            </table>
                             </div>
                         </div>
     
@@ -79,10 +95,10 @@
                                 </select>
                                 <select class="form-select envio_domicilio active" aria-label="Default select example" onchange="opcionDomicilio()">
                                     <option selected>Seleccionar Zona</option>
-                                    <option value="0" data-categoria="0">CABA - Gratis</option>
-                                    <option value="400" data-categoria="400">Zona Norte - $400</option>
-                                    <option value="450" data-categoria="450">Zona Sur - $450</option>
-                                    <option value="500" data-categoria="500">Zona Oeste - $500</option>
+                                    <option class="envio_dom_opcion" value="1">CABA - Gratis</option>
+                                    <option class="envio_dom_opcion" value="2">Zona Norte - $400</option>
+                                    <option class="envio_dom_opcion" value="3">Zona Sur - $450</option>
+                                    <option class="envio_dom_opcion" value="4">Zona Oeste - $500</option>
                                 </select>
                                 <div id="ver_total">
                                 </div>

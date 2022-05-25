@@ -1,5 +1,6 @@
 // Declaro variables
 
+let costoEnvio =0;
 let mensaje;
 let opcion = "";
 let totalFinal = 0;
@@ -30,7 +31,7 @@ const productos = [
 
 
 const carrito = [];
-const carritoFinal = [];
+let carritoFinal = [];
 const arrayPedido = [];
 
 class detallePedido {
@@ -41,6 +42,12 @@ class detallePedido {
     };
 };
 
+const envio = [
+    {idZonaEnvio: 1, precioEnvio: 0, descripcionEnvio: "CABA"},
+    {idZonaEnvio: 2, precioEnvio: 400, descripcionEnvio: "Zona Norte"},
+    {idZonaEnvio: 3, precioEnvio: 450, descripcionEnvio: "Zona Sur"},
+    {idZonaEnvio: 4, precioEnvio: 500, descripcionEnvio: "Zona Oeste"}
+];
 // Guardo el array en el LS
 const guardoLS = () =>{
     localStorage.setItem('listaProductos', JSON.stringify(arrayPedido));
@@ -108,66 +115,122 @@ botonCompra.forEach(button =>{
         return carrito
         
 })
-
+recuperoLS()
 console.log(arrayPedido)
 
-// Envio
-const opcionesEnvio = document.querySelector('.opciones_envio');
-const envioDomicilio = document.querySelector('.envio_domicilio')
-let valorEnvio = 0;
-let seleccion;
-let seleccionDomicilio;
-
-function opcionDomicilio(){
-    seleccionDomicilio = envioDomicilio.value;
-    return seleccionDomicilio
-
-}
-
-console.log(seleccionDomicilio)
-function opcionEnvio(){
-	seleccion = opcionesEnvio.options[opcionesEnvio.selectedIndex].value;
-		
-	if (seleccion == "2"){
-        envioDomicilio.style.display="block";
-		
-	} else{
-		envioDomicilio.style.display="none";
-    }
-}
-
-
-recuperoLS()
-
+   
 
 let detalleMiPedido = document.querySelector("#detalle_mi_pedido");
+let totalProductos = document.querySelector("#total_productos")
+let contenedorTotal
 
-console.log(carritoFinal);
 
-// Muestro los productos seleccionados en carrito_compra.html
-if (carritoFinal != undefined){
-    for (const detallePedido of carritoFinal) {
-        total= (detallePedido.precioPedido * detallePedido.cantidadPedido);
-        totalFinal +=total;
-        mensaje = `<li> ${detallePedido.productoPedido.toUpperCase()} $${detallePedido.precioPedido}
-                    Cantidad: ${detallePedido.cantidadPedido}
-                    Total: ${total}</li>`;
-        let contenedor = document.createElement("div");
-        contenedor.innerHTML = mensaje;
-        detalleMiPedido.appendChild(contenedor);
-    }
+
+function carritoHtml() {
     
+    if (carritoFinal != undefined){
+        for (const detallePedido of carritoFinal) {
+            let contenedor = document.createElement("tr");
+            indexBoton = carritoFinal.indexOf(detallePedido)
+            total= (detallePedido.precioPedido * detallePedido.cantidadPedido);
+            totalFinal +=total;
+            mensaje = `<tr>
+                        <td>${detallePedido.productoPedido.toUpperCase()}</td>
+                        <td class="cantidad_producto" >
+                            <button class="btn_suma" data-id="${indexBoton}" onclick="sumaProducto(this)"><img src="./../imagenes/iconos/mas.png" alt="icono suma" width="20" height="20"></button>
+                            ${detallePedido.cantidadPedido}
+                            <button class="btn_resta" data-id="${indexBoton}" onclick="restaProducto(this)"><img src="./../imagenes/iconos/menos.png" alt="icono menos" width="20" height="20"></button>
+                        </td>
+                        <td>$${detallePedido.precioPedido}</td>
+                        <td>$${detallePedido.precioPedido*detallePedido.cantidadPedido}</td>
+                        <button id ="${detallePedido.productoPedido}" class="borrar-producto" onclick="eliminarProducto(this)" data-id="${detallePedido.productoPedido}"><img src="./../imagenes/iconos/eliminar.png" alt="icono eliminar" width="20" height="20"></button>
+                        
+                    </tr>`
+            
+            contenedor.innerHTML = mensaje;
+            detalleMiPedido.appendChild(contenedor);
+
+}   
+    totalProductos.innerHTML = `<p>Total  $${totalFinal}</p>`
     let verTotal = document.querySelector("#ver_total");
-    let contenedorTotal = document.createElement("div");
-    let totalHtml = `<p> Total: ${totalFinal}`
+    contenedorTotal = document.createElement("div");
+    let totalHtml = `<p>Total: ${totalFinal}</p>`
     contenedorTotal.innerHTML = totalHtml;
     verTotal.appendChild(contenedorTotal);
+
+}
 }
 
+carritoHtml()
+
+function limpiarHTML() {
+    while (detalleMiPedido.firstChild) {
+        detalleMiPedido.removeChild(detalleMiPedido.firstChild)
+        totalFinal = 0;
+    }
+    contenedorTotal.removeChild(contenedorTotal.firstChild)
+}
+
+let botonInfo;
+const carritoHTML = document.querySelector('#detalle_mi_pedido');
 
 
 
+function eliminarProducto(x){
+    const boton = carritoHTML.querySelectorAll('.borrar-producto[data-id]')
+    let id = x.id
+    console.log(id)
 
+    boton.forEach(e =>{
+        console.log(e.parentElement)
+        botonInfo = e.getAttribute('data-id')
+        if(id == botonInfo){
+                carritoFinal= carritoFinal.filter(detallePedido => detallePedido.productoPedido !== botonInfo);
+                console.log(carritoFinal)
+                limpiarHTML();
+                carritoHtml();
+                return carritoFinal
+        }
+        return carritoFinal
+    })
+    return carritoFinal
 
+}
 
+function sumaProducto(x){
+    const botonSuma = carritoHTML.querySelectorAll('.btn_suma');
+    let idBotonSuma = x.getAttribute('data-id')
+    console.log(idBotonSuma)
+    botonSuma.forEach(e =>{
+        let indexBtnSuma = e.getAttribute('data-id')
+        if(idBotonSuma == indexBtnSuma ){
+                carritoFinal[indexBtnSuma].cantidadPedido += 1
+                
+                console.log(e)
+                limpiarHTML();
+                carritoHtml();
+                return carritoFinal
+        }
+        return carritoFinal
+    })
+    return carritoFinal
+}
 
+function restaProducto(x){
+    const botonResta = carritoHTML.querySelectorAll('.btn_resta');
+    let idBotonResta = x.getAttribute('data-id')
+    console.log(idBotonResta)
+    botonResta.forEach(e =>{
+        let indexBtnResta = e.getAttribute('data-id')
+        if(idBotonResta == indexBtnResta ){
+                carritoFinal[indexBtnResta].cantidadPedido -= 1
+                
+                console.log(e)
+                limpiarHTML();
+                carritoHtml();
+                return carritoFinal
+        }
+        return carritoFinal
+    })
+    return carritoFinal
+}

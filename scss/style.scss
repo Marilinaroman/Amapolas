@@ -101,6 +101,11 @@ footer{
             select{
                 margin: 1rem;
             }
+            .btn_suma, .btn_resta, .borrar-producto{
+                border:none;
+                background-color: transparent;
+                
+            }
             .envio_domicilio{
                 display: none;
             }
