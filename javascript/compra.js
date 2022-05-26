@@ -119,11 +119,10 @@ recuperoLS()
 console.log(arrayPedido)
 
    
-
+let verTotal = document.querySelector("#ver_total");
 let detalleMiPedido = document.querySelector("#detalle_mi_pedido");
 let totalProductos = document.querySelector("#total_productos")
 let contenedorTotal
-
 
 
 function carritoHtml() {
@@ -152,14 +151,18 @@ function carritoHtml() {
 
 }   
     totalProductos.innerHTML = `<p>Total  $${totalFinal}</p>`
-    let verTotal = document.querySelector("#ver_total");
+    
     contenedorTotal = document.createElement("div");
     let totalHtml = `<p>Total: ${totalFinal}</p>`
     contenedorTotal.innerHTML = totalHtml;
     verTotal.appendChild(contenedorTotal);
 
+
+    }
 }
-}
+
+
+
 
 carritoHtml()
 
@@ -223,8 +226,9 @@ function restaProducto(x){
     botonResta.forEach(e =>{
         let indexBtnResta = e.getAttribute('data-id')
         if(idBotonResta == indexBtnResta ){
+                if(carritoFinal[indexBtnResta].cantidadPedido>0){
                 carritoFinal[indexBtnResta].cantidadPedido -= 1
-                
+                } 
                 console.log(e)
                 limpiarHTML();
                 carritoHtml();
@@ -233,4 +237,37 @@ function restaProducto(x){
         return carritoFinal
     })
     return carritoFinal
+};
+
+// Envio
+const opcionesEnvio = document.querySelector('.opciones_envio');
+const envioDomicilio = document.querySelector('.envio_domicilio')
+const envioDomicilioOpciones = document.getElementsByClassName('envio_dom_opcion');
+let consultaPrecio
+let valorEnvio = 0;
+let seleccion;
+let seleccionDomicilio;
+
+function opcionEnvio(){
+	seleccion = opcionesEnvio.options[opcionesEnvio.selectedIndex].value;
+		
+	if (seleccion == "2"){
+        envioDomicilio.style.display="block";
+		
+	} else{
+		envioDomicilio.style.display="none";
+        costoEnvio=0;
+        contenedorTotal.innerHTML = `<p>Total: ${totalFinal + costoEnvio}</p>`
+        verTotal.appendChild(contenedorTotal)
+    }
 }
+
+function opcionDomicilio(a){
+    let opcion = a.value;
+    consultaPrecio = envio.find((precio) => precio.idZonaEnvio == opcion)
+    if(consultaPrecio != undefined){
+        costoEnvio = consultaPrecio.precioEnvio
+        contenedorTotal.innerHTML = `<p>Total: ${totalFinal + costoEnvio}</p>`
+        verTotal.appendChild(contenedorTotal)
+    }
+    }
