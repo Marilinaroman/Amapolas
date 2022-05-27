@@ -1,4 +1,4 @@
-@import "mQueries";
+
 
 *{
     margin: 0;
@@ -6,18 +6,76 @@
     box-sizing: border-box;
     font-family: 'Mukta', sans-serif;
     list-style: none;
+    
 }
 //----------Inicio---------//
 
 //-----Navbar-----//
-nav{
+header{
     background-color: white;
-    .navbar-toggler:focus{
-        box-shadow: none;
+    nav{
+        background-color: white;
+        .navbar-toggler:focus{
+            box-shadow: none;
+        }
+        #navbarText{
+            width: 50%;
+        }
+        .nav-link{
+            color: #000;
+        }
+        .carrito_toggle{
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            cursor: pointer;
+            border:none;
+            .boton_carrito, img{
+                border:none;
+                background-color: white;
+    
+            }
+                
+        }
+        .muestra_carrito{
+            display: none;
+            background-color: white;
+            list-style: none;
+            position: relative;
+            align-items: center;
+            position: fixed;
+            padding: 20px 0;
+            top: 60px;
+            width: 50%;
+            height: auto;
+            overflow-y: auto;
+            transition: left 0.3s;
+            border-radius: 0.5rem;
+            border-color: #d6f3a0;
+            border-width: 0.25rem;
+            border-style: solid;
+            }
+            .carrito_visible{
+                right: 0;
+                display: block;
+                .navbar-item-link{
+                    color:white;
+                    line-height: 4rem;
+                }
+                .btn a{
+                    text-decoration: none;
+                    box-shadow: none;
+                    color: #000;
+                }
+                .btn_resta, .btn_suma, .borrar-producto{
+                    border:none;
+                    background-color: transparent;
+                }
+            }
     }
-    .nav-link{
-        color: #000;
-    }
+
     
 }
 .imagen_principal{
@@ -117,3 +175,5 @@ footer{
     }
     
 }  
+
+@import "mQueries";

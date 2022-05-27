@@ -44,6 +44,12 @@
         
 }
 @media only screen and (max-width: 390px){
+
+    header{
+        .muestra_carrito{
+            width: 100%;
+        }
+    }
     #desayunos,#tortas{
         .row{
             grid-template-columns: 1fr;

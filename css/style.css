@@ -1,60 +1,3 @@
-@media only screen and (max-width: 768px) {
-  #desayunos .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; }
-  #tortas .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; }
-  #quienes_somos #formulario .carousel {
-    display: grid;
-    align-items: center; }
-  #carrito_compra .categorias {
-    grid-template-columns: 1fr 1fr; }
-    #carrito_compra .categorias .categoria {
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 5px; }
-      #carrito_compra .categorias .categoria img {
-        width: 30px;
-        margin-right: 10px;
-        margin-bottom: 0; }
-      #carrito_compra .categorias .categoria p {
-        margin-bottom: 0; } }
-
-@media only screen and (max-width: 390px) {
-  #desayunos .row, #tortas .row {
-    grid-template-columns: 1fr;
-    max-width: 90%; }
-  #quienes_somos .nosotros p {
-    width: 100%; }
-  #quienes_somos #formulario .row {
-    display: flex;
-    flex-direction: column-reverse;
-    grid-template-columns: 1fr; }
-    #quienes_somos #formulario .row .contacto, #quienes_somos #formulario .row .col-7 {
-      display: grid;
-      justify-content: center;
-      width: 100%; }
-    #quienes_somos #formulario .row .carousel {
-      width: 100%;
-      margin-bottom: 1rem; }
-  #quienes_somos #formulario .titulos {
-    margin-top: 1rem; }
-  #iniciar_sesion {
-    display: block; }
-    #iniciar_sesion #mi_sesion, #iniciar_sesion #registrarme {
-      display: grid;
-      width: 100%;
-      margin: 0.5rem;
-      margin-bottom: 1rem; }
-      #iniciar_sesion #mi_sesion #registratme, #iniciar_sesion #mi_sesion .btn, #iniciar_sesion #registrarme #registratme, #iniciar_sesion #registrarme .btn {
-        margin-top: 1rem;
-        margin-bottom: 0.5rem; }
-  #carrito_compra .categorias {
-    grid-template-columns: 1fr; } }
-
 * {
   margin: 0;
   padding: 0%;
@@ -62,12 +5,57 @@
   font-family: 'Mukta', sans-serif;
   list-style: none; }
 
-nav {
+header {
   background-color: white; }
-  nav .navbar-toggler:focus {
-    box-shadow: none; }
-  nav .nav-link {
-    color: #000; }
+  header nav {
+    background-color: white; }
+    header nav .navbar-toggler:focus {
+      box-shadow: none; }
+    header nav #navbarText {
+      width: 50%; }
+    header nav .nav-link {
+      color: #000; }
+    header nav .carrito_toggle {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      cursor: pointer;
+      border: none; }
+      header nav .carrito_toggle .boton_carrito, header nav .carrito_toggle img {
+        border: none;
+        background-color: white; }
+    header nav .muestra_carrito {
+      display: none;
+      background-color: white;
+      list-style: none;
+      position: relative;
+      align-items: center;
+      position: fixed;
+      padding: 20px 0;
+      top: 60px;
+      width: 50%;
+      height: auto;
+      overflow-y: auto;
+      transition: left 0.3s;
+      border-radius: 0.5rem;
+      border-color: #d6f3a0;
+      border-width: 0.25rem;
+      border-style: solid; }
+    header nav .carrito_visible {
+      right: 0;
+      display: block; }
+      header nav .carrito_visible .navbar-item-link {
+        color: white;
+        line-height: 4rem; }
+      header nav .carrito_visible .btn a {
+        text-decoration: none;
+        box-shadow: none;
+        color: #000; }
+      header nav .carrito_visible .btn_resta, header nav .carrito_visible .btn_suma, header nav .carrito_visible .borrar-producto {
+        border: none;
+        background-color: transparent; }
 
 .imagen_principal {
   margin-bottom: 1rem; }
@@ -142,3 +130,62 @@ footer {
 
 .contenido .activo {
   display: grid; }
+
+@media only screen and (max-width: 768px) {
+  #desayunos .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; }
+  #tortas .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; }
+  #quienes_somos #formulario .carousel {
+    display: grid;
+    align-items: center; }
+  #carrito_compra .categorias {
+    grid-template-columns: 1fr 1fr; }
+    #carrito_compra .categorias .categoria {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px; }
+      #carrito_compra .categorias .categoria img {
+        width: 30px;
+        margin-right: 10px;
+        margin-bottom: 0; }
+      #carrito_compra .categorias .categoria p {
+        margin-bottom: 0; } }
+
+@media only screen and (max-width: 390px) {
+  header .muestra_carrito {
+    width: 100%; }
+  #desayunos .row, #tortas .row {
+    grid-template-columns: 1fr;
+    max-width: 90%; }
+  #quienes_somos .nosotros p {
+    width: 100%; }
+  #quienes_somos #formulario .row {
+    display: flex;
+    flex-direction: column-reverse;
+    grid-template-columns: 1fr; }
+    #quienes_somos #formulario .row .contacto, #quienes_somos #formulario .row .col-7 {
+      display: grid;
+      justify-content: center;
+      width: 100%; }
+    #quienes_somos #formulario .row .carousel {
+      width: 100%;
+      margin-bottom: 1rem; }
+  #quienes_somos #formulario .titulos {
+    margin-top: 1rem; }
+  #iniciar_sesion {
+    display: block; }
+    #iniciar_sesion #mi_sesion, #iniciar_sesion #registrarme {
+      display: grid;
+      width: 100%;
+      margin: 0.5rem;
+      margin-bottom: 1rem; }
+      #iniciar_sesion #mi_sesion #registratme, #iniciar_sesion #mi_sesion .btn, #iniciar_sesion #registrarme #registratme, #iniciar_sesion #registrarme .btn {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem; }
+  #carrito_compra .categorias {
+    grid-template-columns: 1fr; } }

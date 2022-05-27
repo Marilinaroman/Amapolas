@@ -11,14 +11,16 @@
     <link rel="shortcut icon" href="./imagenes/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
     <script defer src="./javascript/main.js"></script>
+    <script defer src="./javascript/carritoPrevio.js"></script>
     <script defer src="./javascript/compra.js"></script>
 </head>
 <body>
     <div  class="container-fluid">
-        <header class="sticky-top">
+        <header class="sticky-top row">
             <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
+                <div class="container-fluid col-10">
                     <a class="navbar-brand" href="index.html"><img src="./imagenes/logo.png" alt="logo" width="178" height="71"></a>
+                    
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <img src="./imagenes/iconos/home.png" alt="menu" width="24" height="24">
                     </button>
@@ -39,12 +41,35 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="./pages/cuenta.html">Ingresar</a>
                             </li>
-                            <li><a class="nav-link" href="./pages/carrito_compra.html">Finalizar compra</a></li>
                         </ul>
                     </span>
                     </div>
                 </div>
+                <div class="carrito_toggle col-1 ">
+                    <button class="boton_carrito"><img src="./imagenes/iconos/carrito-de-compras.png" alt="muestra detalle carrito" width="24" height="24">
+                        <span class="badge badge bg-secondary bg-danger total_carrito">$0</span>
+                        <span><i class="fas fa-shopping-cart "></i></span>
+                    </button>
+                    <div class="muestra_carrito">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="col-4">Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detalle_mi_carrito">
+                            </tbody>
+                            <th id="total_productos_previo"></th>
+                            
+                        </table>
+                    </div>
+                </div>
+                    
             </nav>
+            
         </header>
         <main>
             <img src="./imagenes/imagen_principal.png" class=" imagen_principal img-fluid rounded mx-auto d-block" alt="Imagen principal" >
