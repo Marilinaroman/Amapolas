@@ -2,7 +2,17 @@ let verTotal = document.querySelector("#ver_total");
 let detalleMiPedido = document.querySelector("#detalle_mi_pedido");
 let totalProductos = document.querySelector("#total_productos")
 let contenedorTotal
+let botonInfo;
+const carritoHTML = document.querySelector('#detalle_mi_pedido');
 
+// Variables del Envio
+const opcionesEnvio = document.querySelector('.opciones_envio');
+const envioDomicilio = document.querySelector('.envio_domicilio');
+const envioDomicilioOpciones = document.getElementsByClassName('envio_dom_opcion');
+let consultaPrecio;
+let valorEnvio = 0;
+let seleccion;
+let seleccionDomicilio;
 
 function carritoHtml() {
     
@@ -50,8 +60,7 @@ function limpiarHTML() {
     contenedorTotal.removeChild(contenedorTotal.firstChild)
 }
 
-let botonInfo;
-const carritoHTML = document.querySelector('#detalle_mi_pedido');
+
 
 
 
@@ -115,14 +124,7 @@ function restaProducto(x){
     return carritoFinal
 };
 
-// Envio
-const opcionesEnvio = document.querySelector('.opciones_envio');
-const envioDomicilio = document.querySelector('.envio_domicilio')
-const envioDomicilioOpciones = document.getElementsByClassName('envio_dom_opcion');
-let consultaPrecio
-let valorEnvio = 0;
-let seleccion;
-let seleccionDomicilio;
+
 
 function opcionEnvio(){
 	seleccion = opcionesEnvio.options[opcionesEnvio.selectedIndex].value;

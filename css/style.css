@@ -8,11 +8,29 @@
 header {
   background-color: white; }
   header nav {
-    background-color: white; }
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    align-items: center;
+    height: 5rem; }
+    header nav .nav-toggle-menu {
+      background: none;
+      border: none;
+      display: none;
+      cursor: pointer; }
+    header nav .navbar {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      position: relative;
+      justify-content: space-between; }
+      header nav .navbar .navbar-item-link {
+        color: #000;
+        text-decoration: none;
+        font-size: medium;
+        text-transform: uppercase; }
     header nav .navbar-toggler:focus {
       box-shadow: none; }
-    header nav #navbarText {
-      width: 50%; }
     header nav .nav-link {
       color: #000; }
     header nav .carrito_toggle {
@@ -132,6 +150,32 @@ footer {
   display: grid; }
 
 @media only screen and (max-width: 768px) {
+  header nav {
+    justify-content: space-evenly; }
+    header nav .nav-toggle-menu {
+      display: block; }
+      header nav .nav-toggle-menu:focus:not(:focus-visible) {
+        outline: none; }
+    header nav .navbar {
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      padding: 20px 0;
+      top: 60px;
+      width: 50%;
+      height: calc(100% -80px);
+      overflow-y: auto;
+      background-color: white;
+      left: 100%;
+      transition: right 0.3s;
+      border-radius: 0.5rem;
+      border-color: #fad8ce;
+      border-width: 0.25rem;
+      border-style: solid; }
+    header nav .navbar_visible {
+      left: 0; }
+      header nav .navbar_visible .navbar-item-link {
+        line-height: 4rem; }
   #desayunos .row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; }
@@ -157,8 +201,11 @@ footer {
         margin-bottom: 0; } }
 
 @media only screen and (max-width: 390px) {
-  header .muestra_carrito {
-    width: 100%; }
+  header nav {
+    width: 100%;
+    justify-content: center; }
+    header nav .muestra_carrito {
+      width: 100%; }
   #desayunos .row, #tortas .row {
     grid-template-columns: 1fr;
     max-width: 90%; }

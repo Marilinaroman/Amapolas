@@ -13,35 +13,21 @@
     <script defer src="./../javascript/main.js"></script>
 </head>
 <body>
-    <div  class="container-fluid">
+    <div class="container-fluid">
         <header class="sticky-top">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="./../index.html"><img src="./../imagenes/logo.png" alt="logo" width="178" height="71"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                        <img src="./../imagenes/iconos/home.png" alt="menu" width="24" height="24">
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarText">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./../index.html">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./../index.html#desayunos">Desayunos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./../index.html#tortas">Tortas</a>
-                        </li>
-                    </ul>
-                    <span class="navbar-text">
-                        <ul>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Ingresar</a>
-                            </li>
-                        </ul>
-                    </span>
-                    </div>
-                </div>
+            <nav>
+                <button class="nav-toggle-menu" aria-label="Abrir menú desplegable">
+                    <img src="./../imagenes/iconos/home.png" alt="menu" width="24" height="24">
+                </button> 
+
+                <a href="./../index.html"><img src="./../imagenes/logo.png" alt="logo" width="178" height="71"></a>                
+            
+                <ul class="navbar col-9">
+                    <li class="nav-item"><a class="navbar-item-link" href="./../index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="navbar-item-link" href="./../index.html#desayunos">Desayunos</a></li>
+                    <li class="nav-item"><a class="navbar-item-link" href="./../index.html#tortas">Tortas</a></li>
+                    <li class="nav-item"><a class="navbar-item-link" href="./cuenta.html">Ingresar</a></li>
+                </ul>
             </nav>
         </header>
         <main class="cuenta">

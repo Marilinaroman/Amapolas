@@ -16,6 +16,14 @@ let totalPrevio = document.querySelector("#total_previo");
 let carritoPrevio = document.querySelector("#detalle_mi_carrito");
 let totalProductosPrevio = document.querySelector("#total_productos_previo")
 let carritoTotal = document.querySelector('.total_carrito')
+const carrito = [];
+let carritoFinal = [];
+let arrayPedido = [];
+let cantidad
+const botonCompra = document.querySelectorAll("button[data-id-product]")
+let consultaPedido =[];
+let botonInfoPrevio;
+const carritoPrevioHtml = document.querySelector('#detalle_mi_carrito');
 
 
 // Genero array de productos
@@ -33,12 +41,6 @@ const productos = [
     { id: 11, producto: "tiramisu", idPrecio: 2000 },
     { id: 12, producto: "torta tradicional", idPrecio: 2000 },
 ];
-
-
-const carrito = [];
-let carritoFinal = [];
-let arrayPedido = [];
-
 
 class detallePedido {
     constructor(productoPedido, cantidadPedido, precioPedido) {
@@ -79,9 +81,7 @@ const recuperoLS = () => {
         }
     })
 }
-let cantidad
-const botonCompra = document.querySelectorAll("button[data-id-product]")
-let consultaPedido =[];
+
 function carritoPreliminar() {
     
     if (arrayPedido != undefined){
@@ -106,11 +106,10 @@ function carritoPreliminar() {
             carritoPrevio.appendChild(contenedor);
         }
         totalProductosPrevio.innerHTML = `<p>Total  $${totalFinal}</p>
-        <button class="btn" onclick="guardaPedido()"><a href="./pages/carrito_compra.html">Finalizar compra</a> </button>`
+        <a href="./pages/carrito_compra.html"><button class="btn" onclick="guardaPedido()">Finalizar compra</button></a> `
         carritoTotal.innerHTML = `$${totalFinal}`
 }
 }
-
 
 function consultaArrayPedido (){
 
@@ -144,10 +143,6 @@ function consultaArrayPedido (){
         
 }
 
-
-
-
-
 // con cada boton de compra alimento el array de pedidos
 botonCompra.forEach(button =>{
         button.addEventListener("click", ()=>{
@@ -170,10 +165,6 @@ function limpiarPrevioHtml() {
         totalFinal = 0;
     }
 }
-
-let botonInfoPrevio;
-const carritoPrevioHtml = document.querySelector('#detalle_mi_carrito');
-
 
 
 function eliminarProductoPrevio(x){
@@ -243,4 +234,3 @@ const guardaPedido = () =>{
 }
 
 recuperoLS()
-console.log(arrayPedido)

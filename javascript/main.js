@@ -1,6 +1,37 @@
+// Variables Navbar
+const navDesplegable = document.querySelector(".nav-toggle-menu");
+const navOpciones = document.querySelector(".navbar");
+// Defino variables globales
+let buscarLogin = [];
+let mailConsulta;
+let mensajeRegistro= document.getElementById("mensaje_registro");
+let consultaRegistro = document.getElementById("consulta_clientes");
+let contraseñaConsulta;
+let mensajeDeValidacion = document.getElementById("mensaje_validacion");
+//carrito-toggle
 const navToggle = document.querySelector(".boton_carrito");
 const navMenu = document.querySelector(".muestra_carrito");
 
+const clientes = [];
+class registroClientes {
+    constructor(idMail, contraseña) {
+        this.idMail = idMail;
+        this.contraseña = contraseña;
+    };
+};
+
+//Navbar visible
+navDesplegable.addEventListener("click", () => {
+    navOpciones.classList.toggle("navbar_visible");
+    if (navOpciones.classList.contains("nav-menu_visible")) {
+		navDesplegable.setAttribute("aria-label", "Cerrar menú");
+    } else {
+		navDesplegable.setAttribute("aria-label", "Abrir menú desplegable");
+}
+});
+
+
+//Carrito visible
 navToggle.addEventListener("click", () => {
     navMenu.classList.toggle("carrito_visible");
     if (navMenu.classList.contains("nav-carrito_visible")) {
@@ -10,21 +41,8 @@ navToggle.addEventListener("click", () => {
 }
 });
 
-// Defino variables globales
-let buscarLogin = [];
-let mailConsulta;
-let mensajeRegistro= document.getElementById("mensaje_registro");
-let consultaRegistro = document.getElementById("consulta_clientes");
-let contraseñaConsulta;
-let mensajeDeValidacion = document.getElementById("mensaje_validacion");
 
-const clientes = [];
-class registroClientes {
-    constructor(idMail, contraseña) {
-        this.idMail = idMail;
-        this.contraseña = contraseña;
-    };
-};
+
 
 // Defino la funcion que se ejecutará cuando un nuevo cliente quiera registrarse
 function registrarme (){
