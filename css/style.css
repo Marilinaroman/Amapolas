@@ -99,8 +99,10 @@ header {
 #quienes_somos .nosotros {
   margin-top: 5rem; }
 
-.cuenta h1 {
-  margin-bottom: 3rem; }
+.cuenta {
+  height: 50rem; }
+  .cuenta h1 {
+    margin-bottom: 3rem; }
 
 footer {
   background-image: linear-gradient(to bottom, #ffffff, #fbf8fc, #fbf0f7, #fce8ee, #fde1e2, #fddddd, #fed8d7, #fed4d1, #ffd2d6, #ffd0dc, #fecee3, #faceeb); }
@@ -202,8 +204,7 @@ footer {
 
 @media only screen and (max-width: 390px) {
   header nav {
-    width: 100%;
-    justify-content: center; }
+    width: 100%; }
     header nav .muestra_carrito {
       width: 100%; }
   #desayunos .row, #tortas .row {

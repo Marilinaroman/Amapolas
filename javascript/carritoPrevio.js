@@ -1,5 +1,4 @@
-// Declaro variables
-
+// Declaro variables globales
 let costoEnvio =0;
 let mensaje;
 let opcion = "";
@@ -19,12 +18,12 @@ let carritoTotal = document.querySelector('.total_carrito')
 const carrito = [];
 let carritoFinal = [];
 let arrayPedido = [];
-let cantidad
+let cantidad;
 const botonCompra = document.querySelectorAll("button[data-id-product]")
 let consultaPedido =[];
 let botonInfoPrevio;
-const carritoPrevioHtml = document.querySelector('#detalle_mi_carrito');
-
+const carritoPrevioHtml = document.querySelector('#detalle_mi_carrito')
+let pagPrin = document.body.id;
 
 // Genero array de productos
 const productos = [
@@ -42,16 +41,13 @@ const productos = [
     { id: 12, producto: "torta tradicional", idPrecio: 2000 },
 ];
 
+// Genero el contructor del array pedido
 class detallePedido {
     constructor(productoPedido, cantidadPedido, precioPedido) {
         this.productoPedido = productoPedido;
         this.precioPedido = precioPedido;
         this.cantidadPedido = cantidadPedido;
     };
-    cantidadFinalPedido (){
-        cantidadDeProductos += this.cantidadPedido
-        return cantidadDeProductos
-    }
     
 };
 
@@ -61,6 +57,7 @@ const envio = [
     {idZonaEnvio: 3, precioEnvio: 450, descripcionEnvio: "Zona Sur"},
     {idZonaEnvio: 4, precioEnvio: 500, descripcionEnvio: "Zona Oeste"}
 ];
+
 // Guardo el array en el LS
 const guardoLS = () =>{
     localStorage.setItem('listaProductos', JSON.stringify(arrayPedido));
@@ -70,7 +67,6 @@ const guardoLS = () =>{
 const recuperoLS = () => {
     const almacenados = JSON.parse(localStorage.getItem("listaProductos"));
     carrito.push(almacenados);
-
     
     carrito.forEach( element => {
         for ( const objeto of element){
@@ -82,8 +78,16 @@ const recuperoLS = () => {
     })
 }
 
+// En index.html consulto el LS guardado
+if(pagPrin === "pag_principal"){
+    if(localStorage.getItem('listaProductos')){
+        arrayPedido = JSON.parse(localStorage.getItem("listaProductos"))
+        carritoPreliminar();
+    }
+}
+
+// muestro en index.html el carrito preliminar
 function carritoPreliminar() {
-    
     if (arrayPedido != undefined){
         for (const detallePedido of arrayPedido) {
             let contenedor = document.createElement("tr");
@@ -106,38 +110,38 @@ function carritoPreliminar() {
             carritoPrevio.appendChild(contenedor);
         }
         totalProductosPrevio.innerHTML = `<p>Total  $${totalFinal}</p>
-        <a href="./pages/carrito_compra.html"><button class="btn" onclick="guardaPedido()">Finalizar compra</button></a> `
-        carritoTotal.innerHTML = `$${totalFinal}`
+        <a href="./pages/carrito_compra.html"><button class="btn" onclick="guardaPedido()">Finalizar compra</button></a> `;
+        carritoTotal.innerHTML = `$${totalFinal}`;
 }
 }
 
+// Evito objetos duplicados en el array pedido y sumo las cantidades
 function consultaArrayPedido (){
 
     if (arrayPedido == ""){
         cantidadPedido = 1;
-        console.log(arrayPedido)
-        arrayPedido.push(new detallePedido(productoPedido, cantidadPedido, precioPedido))
-        
+        console.log(arrayPedido);
+        arrayPedido.push(new detallePedido(productoPedido, cantidadPedido, precioPedido));        
         limpiarPrevioHtml();
         carritoPreliminar();
         return arrayPedido;
     } else if((arrayPedido)) {
-        consultaPedido = arrayPedido.find((encontrarProducto) => encontrarProducto.productoPedido == productoPedido)
+        consultaPedido = arrayPedido.find((encontrarProducto) => encontrarProducto.productoPedido == productoPedido);
+
         if( consultaPedido == undefined){
             cantidadPedido = 1;
-            arrayPedido.push(new detallePedido(productoPedido, cantidadPedido, precioPedido))
+            arrayPedido.push(new detallePedido(productoPedido, cantidadPedido, precioPedido));
             limpiarPrevioHtml();
             carritoPreliminar();
             return arrayPedido;
         } else if(consultaPedido != undefined){
-            cantidadAcum = consultaPedido.cantidadPedido
-            let buscaIndex = arrayPedido.indexOf(consultaPedido)
-            arrayPedido[buscaIndex].cantidadPedido += 1
+            cantidadAcum = consultaPedido.cantidadPedido;
+            let buscaIndex = arrayPedido.indexOf(consultaPedido);
+            arrayPedido[buscaIndex].cantidadPedido += 1;
             limpiarPrevioHtml();
             carritoPreliminar();
             return arrayPedido;
             }
-            
         return arrayPedido;
         }
         
@@ -146,91 +150,91 @@ function consultaArrayPedido (){
 // con cada boton de compra alimento el array de pedidos
 botonCompra.forEach(button =>{
         button.addEventListener("click", ()=>{
-        idCompra = button.getAttribute('data-id-product')
-        buscarProducto = productos.find((buscaProducto) => buscaProducto.id == idCompra)
+        idCompra = button.getAttribute('data-id-product');
+        buscarProducto = productos.find((buscaProducto) => buscaProducto.id == idCompra);
         productoPedido = buscarProducto.producto;
         precioPedido = buscarProducto.idPrecio;
         consultaArrayPedido()
-        
         return arrayPedido;
-        })
-        return arrayPedido
-        
+    }) 
+    return arrayPedido;
 })
 
-
+// funcion borrar del carrito
 function limpiarPrevioHtml() {
     while (carritoPrevio.firstChild) {
-        carritoPrevio.removeChild(carritoPrevio.firstChild)
+        carritoPrevio.removeChild(carritoPrevio.firstChild);
         totalFinal = 0;
     }
 }
 
-
+// funcion aplicada al icono eliminar del carrito en index.html
 function eliminarProductoPrevio(x){
-    const boton = carritoPrevioHtml.querySelectorAll('.borrar-producto[data-id]')
-    let id = x.id
-    console.log(id)
+    const boton = carritoPrevioHtml.querySelectorAll('.borrar-producto[data-id]');
+    let id = x.id;
+    console.log(id);
 
     boton.forEach(e =>{
-        botonInfoPrevio = e.getAttribute('data-id')
-        console.log(botonInfoPrevio)
+        botonInfoPrevio = e.getAttribute('data-id');
+        console.log(botonInfoPrevio);
         if(id == botonInfoPrevio){
-                console.log("ok")
-                arrayPedido= arrayPedido.filter(detallePedido => detallePedido.productoPedido !== botonInfoPrevio);
-                console.log(arrayPedido)
-                limpiarPrevioHtml();
-                carritoPreliminar();
-                return arrayPedido
+            console.log("ok")
+            arrayPedido= arrayPedido.filter(detallePedido => detallePedido.productoPedido !== botonInfoPrevio);
+            console.log(arrayPedido);
+            limpiarPrevioHtml();
+            carritoPreliminar();
+            return arrayPedido;
         }
-        return arrayPedido
+        return arrayPedido;
     })
-    return arrayPedido
+    return arrayPedido;
 
 }
 
+// funcion agrega cantidades, aplicada al boton mas del carrito en index.html
 function sumaProductoPrevio(x){
     const botonSuma = carritoPrevioHtml.querySelectorAll('.btn_suma');
-    let idBotonSuma = x.getAttribute('data-id')
-    console.log(idBotonSuma)
+    let idBotonSuma = x.getAttribute('data-id');
+    console.log(idBotonSuma);
     botonSuma.forEach(e =>{
-        let indexBtnSuma = e.getAttribute('data-id')
+        let indexBtnSuma = e.getAttribute('data-id');
         if(idBotonSuma == indexBtnSuma ){
-                arrayPedido[indexBtnSuma].cantidadPedido += 1
-                
-                console.log(e)
-                limpiarPrevioHtml();
-                carritoPreliminar();
-                return arrayPedido
+            arrayPedido[indexBtnSuma].cantidadPedido += 1
+            console.log(e);
+            limpiarPrevioHtml();
+            carritoPreliminar();
+            return arrayPedido;
         }
-        return arrayPedido
+        return arrayPedido;
     })
-    return arrayPedido
+    return arrayPedido;
 }
 
+// funcion resta cantidades, aplicada al boton menos del carrito en index.html
 function restaProductoPrevio(x){
     const botonResta = carritoPrevioHtml.querySelectorAll('.btn_resta');
-    let idBotonResta = x.getAttribute('data-id')
-    console.log(idBotonResta)
+    let idBotonResta = x.getAttribute('data-id');
+    console.log(idBotonResta);
     botonResta.forEach(e =>{
-        let indexBtnResta = e.getAttribute('data-id')
+        let indexBtnResta = e.getAttribute('data-id');
         if(idBotonResta == indexBtnResta ){
-                if(arrayPedido[indexBtnResta].cantidadPedido>0){
+            if(arrayPedido[indexBtnResta].cantidadPedido>0){
                 arrayPedido[indexBtnResta].cantidadPedido -= 1
-                } 
-                console.log(e)
-                limpiarPrevioHtml();
-                carritoPreliminar();
-                return arrayPedido
+            } 
+            console.log(e);
+            limpiarPrevioHtml();
+            carritoPreliminar();
+            return arrayPedido;
         }
-        return arrayPedido
+        return arrayPedido;
     })
-    return arrayPedido
+    return arrayPedido;
 };
 
+// funcion aplicada al boton finalizar compra del carrito en index.html, guarda en LS
 const guardaPedido = () =>{
-    guardoLS()
+    guardoLS();
 
 }
 
-recuperoLS()
+recuperoLS();

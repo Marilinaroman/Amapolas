@@ -1,3 +1,5 @@
+// Declaro variables
+
 let verTotal = document.querySelector("#ver_total");
 let detalleMiPedido = document.querySelector("#detalle_mi_pedido");
 let totalProductos = document.querySelector("#total_productos")
@@ -13,12 +15,14 @@ let consultaPrecio;
 let valorEnvio = 0;
 let seleccion;
 let seleccionDomicilio;
+let contenedor;
 
+// Genero en carrito_compra.html el detalle final del carrito
 function carritoHtml() {
     
     if (carritoFinal != undefined){
         for (const detallePedido of carritoFinal) {
-            let contenedor = document.createElement("tr");
+            contenedor = document.createElement("tr");
             indexBoton = carritoFinal.indexOf(detallePedido)
             total= (detallePedido.precioPedido * detallePedido.cantidadPedido);
             totalFinal +=total;
@@ -38,86 +42,84 @@ function carritoHtml() {
             contenedor.innerHTML = mensaje;
             detalleMiPedido.appendChild(contenedor);
 
-}   
-    totalProductos.innerHTML = `<p>Total  $${totalFinal}</p>`
-    
-    contenedorTotal = document.createElement("div");
-    let totalHtml = `<p>Total: ${totalFinal}</p>`
-    contenedorTotal.innerHTML = totalHtml;
-    verTotal.appendChild(contenedorTotal);
-
-
+        }   
+        totalProductos.innerHTML = `<p>Total  $${totalFinal}</p>`;
+        contenedorTotal = document.createElement("div");
+        let totalHtml = `<p>Total: ${totalFinal}</p>`;
+        contenedorTotal.innerHTML = totalHtml;
+        verTotal.appendChild(contenedorTotal);
     }
 }
 
 carritoHtml()
 
+// Funcion para limpiar pedido en carrito_compra.html
 function limpiarHTML() {
     while (detalleMiPedido.firstChild) {
-        detalleMiPedido.removeChild(detalleMiPedido.firstChild)
+        detalleMiPedido.removeChild(detalleMiPedido.firstChild);
         totalFinal = 0;
     }
-    contenedorTotal.removeChild(contenedorTotal.firstChild)
+    contenedorTotal.removeChild(contenedorTotal.firstChild);
 }
 
 
 
 
-
+// Funcion para eliminar pedidos en carrito_compra.html
 function eliminarProducto(x){
-    const boton = carritoHTML.querySelectorAll('.borrar-producto[data-id]')
-    let id = x.id
-    console.log(id)
+    const boton = carritoHTML.querySelectorAll('.borrar-producto[data-id]');
+    let id = x.id;
+    console.log(id);
 
     boton.forEach(e =>{
-        console.log(e.parentElement)
-        botonInfo = e.getAttribute('data-id')
+        console.log(e.parentElement);
+        botonInfo = e.getAttribute('data-id');
         if(id == botonInfo){
-                carritoFinal= carritoFinal.filter(detallePedido => detallePedido.productoPedido !== botonInfo);
-                console.log(carritoFinal)
-                limpiarHTML();
-                carritoHtml();
-                return carritoFinal
+            carritoFinal= carritoFinal.filter(detallePedido => detallePedido.productoPedido !== botonInfo);
+            console.log(carritoFinal)
+            limpiarHTML();
+            carritoHtml();
+            return carritoFinal;
         }
-        return carritoFinal
+        return carritoFinal;
     })
-    return carritoFinal
-
+    return carritoFinal;
 }
 
+// Funcion para agregar cantidades en carrito_compra.html
 function sumaProducto(x){
     const botonSuma = carritoHTML.querySelectorAll('.btn_suma');
-    let idBotonSuma = x.getAttribute('data-id')
-    console.log(idBotonSuma)
+    let idBotonSuma = x.getAttribute('data-id');
+    console.log(idBotonSuma);
     botonSuma.forEach(e =>{
         let indexBtnSuma = e.getAttribute('data-id')
         if(idBotonSuma == indexBtnSuma ){
-                carritoFinal[indexBtnSuma].cantidadPedido += 1
-                
-                console.log(e)
-                limpiarHTML();
-                carritoHtml();
-                return carritoFinal
+            carritoFinal[indexBtnSuma].cantidadPedido += 1;
+            console.log(e);
+            limpiarHTML();
+            carritoHtml();
+            return carritoFinal;
         }
         return carritoFinal
     })
     return carritoFinal
 }
 
+// Funcion para restar cantidades en carrito_compra.html
 function restaProducto(x){
     const botonResta = carritoHTML.querySelectorAll('.btn_resta');
-    let idBotonResta = x.getAttribute('data-id')
-    console.log(idBotonResta)
+    let idBotonResta = x.getAttribute('data-id');
+    console.log(idBotonResta);
     botonResta.forEach(e =>{
-        let indexBtnResta = e.getAttribute('data-id')
+        let indexBtnResta = e.getAttribute('data-id');
         if(idBotonResta == indexBtnResta ){
-                if(carritoFinal[indexBtnResta].cantidadPedido>0){
+            if(carritoFinal[indexBtnResta].cantidadPedido>0){
                 carritoFinal[indexBtnResta].cantidadPedido -= 1
-                } 
-                console.log(e)
-                limpiarHTML();
-                carritoHtml();
-                return carritoFinal
+            } 
+            console.log(e)
+            limpiarHTML();
+            carritoHtml();
+            return carritoFinal
         }
         return carritoFinal
     })
@@ -125,7 +127,7 @@ function restaProducto(x){
 };
 
 
-
+// funcion para seleccionar el tipo de envio
 function opcionEnvio(){
 	seleccion = opcionesEnvio.options[opcionesEnvio.selectedIndex].value;
 		
@@ -140,12 +142,13 @@ function opcionEnvio(){
     }
 }
 
+// Funcion para obtener el costo del envio seleccionado
 function opcionDomicilio(a){
     let opcion = a.value;
-    consultaPrecio = envio.find((precio) => precio.idZonaEnvio == opcion)
+    consultaPrecio = envio.find((precio) => precio.idZonaEnvio == opcion);
     if(consultaPrecio != undefined){
-        costoEnvio = consultaPrecio.precioEnvio
+        costoEnvio = consultaPrecio.precioEnvio;
         contenedorTotal.innerHTML = `<p>Total: ${totalFinal + costoEnvio}</p>`
-        verTotal.appendChild(contenedorTotal)
+        verTotal.appendChild(contenedorTotal);
     }
-    }
+}
