@@ -100,7 +100,7 @@ header {
   margin-top: 5rem; }
 
 .cuenta {
-  height: 50rem; }
+  height: 60rem; }
   .cuenta h1 {
     margin-bottom: 3rem; }
 
@@ -140,6 +140,16 @@ footer {
     cursor: pointer; }
     .contenido .contenido_categorias .contenido_categoria:hover {
       border: 5rem; }
+    .contenido .contenido_categorias .contenido_categoria .formulario_pago .descuento_formulario {
+      margin: 1.5rem; }
+      .contenido .contenido_categorias .contenido_categoria .formulario_pago .descuento_formulario .btn {
+        margin-top: 0.5rem; }
+    .contenido .contenido_categorias .contenido_categoria .formulario_pago .form-check {
+      margin: 1.5rem; }
+    .contenido .contenido_categorias .contenido_categoria .formulario_pago .oculta {
+      display: none; }
+    .contenido .contenido_categorias .contenido_categoria .formulario_pago .tarjeta_visible {
+      display: block; }
     .contenido .contenido_categorias .contenido_categoria select {
       margin: 1rem; }
     .contenido .contenido_categorias .contenido_categoria .btn_suma, .contenido .contenido_categorias .contenido_categoria .btn_resta, .contenido .contenido_categorias .contenido_categoria .borrar-producto {

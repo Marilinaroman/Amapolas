@@ -14,6 +14,7 @@
     <script defer src="./../javascript/vistaCarrito.js"></script>
     <script defer src="./../javascript/carritoPrevio.js"></script>
     <script defer src="./../javascript/compra.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div  class="container-fluid">
@@ -90,14 +91,34 @@
                                 </select>
                                 <div id="ver_total">
                                 </div>
+                                <button class="btn" id="confirma_compra"> Confirmar</button>
+                                <!-- FALTA AGREGAR: 
+                                    - validar que se haya seleccionado Opcion de Envio
+                                    - Redireccionamiento a Metodos de pago  -->
+                                
                             </div>
                         </div>
     
                         <div class="contenido_categorias" data-categoria="pago">
                             <div  class="contenido_categoria">
-                                <div class="container p-0">
+                            <form class="formulario_pago">
+                                <div class="form-group descuento_formulario">
+                                    <label for="formGroupExampleInput ">Código de Descuento</label>
+                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Ingrese su código de descuento">
+                                    <button class="btn">Aceptar</button>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="pago_en_efectivo" value="option1" checked>
+                                    <label class="form-check-label" for="pago_en_efectivo">Pago en Efectivo</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="pago_tarjeta" value="option2">
+                                    <label class="form-check-label" for="pago_tarjeta">Tarjeta de Crédito - Débito</label>
+                                </div>
+                                <div id="datos_tarjeta" class="oculta">
                                     <div class="card px-4">
                                         <p class="h8 py-3">Metodo de pago</p>
+                                        
                                         <div class="row gx-3">
                                             <div class="col-12">
                                                 <div class="d-flex flex-column">
@@ -124,27 +145,26 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <div class="btn btn-primary mb-3">
-                                                    <span class="ps-3">Pagar</span>
-                                                    <span class="fas fa-arrow-right"></span>
-                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>
-                                </div
-                            </div>
+                                </div>
+                                
+                            </form>
+                            <button class="btn" id="pagar">Pagar</button>
+                            <button class="btn" id="cancelar_compra"> Cancelar</button>
                         </div>
                     </div>
                 </section>
         </main>
         <footer class="text-center text-lg-start bg-light text-muted">
             <!-- Seccion de Links  -->
-            <section class="">
+            <section>
             <div class="container text-center text-md-start mt-5">
                 <div class="row mt-3">
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <h3 class="text-uppercase fw-bold mb-4">Amapolas 
-                    </h3>
+                    <h3 class="text-uppercase fw-bold mb-4">Amapolas</h3>
                     <img src="./../imagenes/quienes_somos/pasteleria_4.jpg" class="img-fluid rounded mx-auto" width="200rem" alt="foto de nosotros">
                     <p>
                     Here you can use rows and columns to organize your footer content. Lorem ipsum

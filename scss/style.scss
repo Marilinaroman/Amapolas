@@ -127,7 +127,7 @@ header{
     }
 }
 .cuenta{
-    height: 50rem;
+    height: 60rem;
     h1{
         margin-bottom: 3rem;
     }
@@ -176,6 +176,24 @@ footer{
             &:hover {
                 border: 5rem;
             }
+            .formulario_pago{
+                .descuento_formulario{
+                    margin: 1.5rem;
+                    .btn{
+                        margin-top:0.5rem;
+                    }
+                }
+                .form-check{
+                    margin:1.5rem;
+                }
+                .oculta{
+                    display: none;
+                }
+                .tarjeta_visible{
+                        display:block
+                    }
+                
+            }
             select{
                 margin: 1rem;
             }
@@ -187,6 +205,7 @@ footer{
             .envio_domicilio{
                 display: none;
             }
+            
         }
     }
     .activo{

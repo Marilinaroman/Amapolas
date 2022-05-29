@@ -152,3 +152,22 @@ function opcionDomicilio(a){
         verTotal.appendChild(contenedorTotal);
     }
 }
+
+const confirmarPago = document.getElementById('pagar')
+confirmarPago.addEventListener('click', () =>{
+    Swal.fire({
+        icon: 'success',
+        title: 'Gracias por su compra!',
+        text: 'Recibimos su pedido exitosamente',
+        timer: 5000
+    })
+})
+const cancelarCompra = document.getElementById('cancelar_compra')
+cancelarCompra.addEventListener('click', () =>{
+    Swal.fire({
+        icon: 'error',
+        title: 'Su compra ha sido cancelada',
+        text: 'Esperamos que vuelvas pronto!',
+        timer: 5000
+    })
+})

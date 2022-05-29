@@ -12,3 +12,12 @@ navToggle.addEventListener("click", () => {
     navToggle.setAttribute("aria-label", "Abrir carrito");
 }
 });
+
+const btnConsulta = document.getElementById('btn_contacto')
+btnConsulta.addEventListener('click', () =>{
+    Swal.fire({
+        icon: 'info',
+        title: 'Su consulta ha sido enviada',
+        text: 'Estaremos respondiendo pronto!'
+    })
+})

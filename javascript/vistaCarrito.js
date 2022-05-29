@@ -25,5 +25,19 @@ categorias.forEach((categoria) => {
 	});
 });
 
+let pagoEfectivo = document.getElementById('pago_en_efectivo');
+let	pagoTarjeta = document.getElementById('pago_tarjeta');
+const datosTarjeta = document.getElementById('datos_tarjeta');
 
+const eligioEfectivo = () =>{
+	datosTarjeta.classList.remove('tarjeta_visible');
+	datosTarjeta.classList.add('oculta')
+}
 
+const eligioTarjeta = () =>{
+	datosTarjeta.classList.remove('oculta');
+	datosTarjeta.classList.add('tarjeta_visible')
+}
+
+pagoTarjeta.addEventListener('click', eligioTarjeta);
+pagoEfectivo.addEventListener('click', eligioEfectivo);
