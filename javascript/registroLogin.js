@@ -97,7 +97,6 @@ function loguearme(){
 		if (buscarLogin == undefined){
 			mensajeDeValidacion.innerHTML = `El nombre de usuario y/o la contraseña que ingresaste son incorrectos.`
 		} else{
-
 			let mailAValidar = buscarLogin.idMail;
 			let contraseñaAValidar = buscarLogin.contraseña;
 			

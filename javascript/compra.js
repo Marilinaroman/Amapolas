@@ -22,20 +22,21 @@ function carritoHtml() {
     
     if (carritoFinal != undefined){
         for (const detallePedido of carritoFinal) {
+            const {productoPedido, cantidadPedido, precioPedido} = detallePedido
             contenedor = document.createElement("tr");
             indexBoton = carritoFinal.indexOf(detallePedido)
-            total= (detallePedido.precioPedido * detallePedido.cantidadPedido);
+            total= (precioPedido * cantidadPedido);
             totalFinal +=total;
             mensaje = `<tr>
-                        <td>${detallePedido.productoPedido.toUpperCase()}</td>
+                        <td>${productoPedido.toUpperCase()}</td>
                         <td class="cantidad_producto" >
                             <button class="btn_suma" data-id="${indexBoton}" onclick="sumaProducto(this)"><img src="./../imagenes/iconos/mas.png" alt="icono suma" width="20" height="20"></button>
-                            ${detallePedido.cantidadPedido}
+                            ${cantidadPedido}
                             <button class="btn_resta" data-id="${indexBoton}" onclick="restaProducto(this)"><img src="./../imagenes/iconos/menos.png" alt="icono menos" width="20" height="20"></button>
                         </td>
-                        <td>$${detallePedido.precioPedido}</td>
-                        <td>$${detallePedido.precioPedido*detallePedido.cantidadPedido}</td>
-                        <button id ="${detallePedido.productoPedido}" class="borrar-producto" onclick="eliminarProducto(this)" data-id="${detallePedido.productoPedido}"><img src="./../imagenes/iconos/eliminar.png" alt="icono eliminar" width="20" height="20"></button>
+                        <td>$${precioPedido}</td>
+                        <td>$${precioPedido*cantidadPedido}</td>
+                        <button id ="${productoPedido}" class="borrar-producto" onclick="eliminarProducto(this)" data-id="${productoPedido}"><img src="./../imagenes/iconos/eliminar.png" alt="icono eliminar" width="20" height="20"></button>
                         </tr>
                         `
             
@@ -113,9 +114,7 @@ function restaProducto(x){
     botonResta.forEach(e =>{
         let indexBtnResta = e.getAttribute('data-id');
         if(idBotonResta == indexBtnResta ){
-            if(carritoFinal[indexBtnResta].cantidadPedido>0){
-                carritoFinal[indexBtnResta].cantidadPedido -= 1
-            } 
+            carritoFinal[indexBtnResta].cantidadPedido>0? (carritoFinal[indexBtnResta].cantidadPedido -= 1) : console.log('es cero');
             console.log(e)
             limpiarHTML();
             carritoHtml();
@@ -158,8 +157,10 @@ function opcionDomicilio(a){
 console.log(importeACobrar)
 let claveDescuento = 'AMAPOLASOFF';
 let codigoDescuento = document.getElementById('codigo_descuento');
-const btnDescuento = document.getElementById('btn_descuento')
-function codigoOk () {
+const btnDescuento = document.getElementById('btn_descuento');
+
+//Funcion para generar el alert de código de descuento correcto
+const codigoOk = () => {
     Toastify({
         text: "Se aplico el descuento",
         duration: 3000,
@@ -172,9 +173,10 @@ function codigoOk () {
             background: "linear-gradient(to right, #00b09b, #96c93d)",
         },
     }).showToast();
-
 }
-function codigoFail () {
+
+// Funcion para generar el alert de código de descuento incorrecto
+const codigoFail = () => {
     Toastify({
         text: "El código ingresado no es valido",
         duration: 3000,
@@ -187,8 +189,10 @@ function codigoFail () {
             background: "linear-gradient(to right, #E74C3C , #F5B7B1)",
         },
     }).showToast();
-
 }
+
+
+// Funcion que se ejecuta cuando aplica el codigo de descuento
 const aplicaDescuento = () => {
     codigoDescuento.value.toUpperCase() === claveDescuento? totalFinal *=0.8 : console.log('error');
     codigoDescuento.value.toUpperCase() === claveDescuento? codigoOk() : codigoFail();
@@ -199,7 +203,7 @@ const aplicaDescuento = () => {
 
 
 
-
+// Alert que se genera al confirmar el pago
 const confirmarPago = document.getElementById('pagar')
 confirmarPago.addEventListener('click', () =>{
     Swal.fire({
@@ -209,6 +213,8 @@ confirmarPago.addEventListener('click', () =>{
         timer: 5000
     })
 })
+
+//Alert que se genera al cancelar el pago
 const cancelarCompra = document.getElementById('cancelar_compra')
 cancelarCompra.addEventListener('click', () =>{
     Swal.fire({

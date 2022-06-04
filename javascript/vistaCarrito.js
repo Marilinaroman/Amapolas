@@ -16,11 +16,7 @@ categorias.forEach((categoria) => {
 
 		// Activo el contenedor que corresponde
 		contenidoCategorias.forEach((contenedor) => {
-			if(contenedor.dataset.categoria === categoriaActiva){
-				contenedor.classList.add('activo');
-			} else {
-				contenedor.classList.remove('activo');
-			}
+			contenedor.dataset.categoria === categoriaActiva? contenedor.classList.add('activo') : contenedor.classList.remove('activo');
 		});
 	});
 });

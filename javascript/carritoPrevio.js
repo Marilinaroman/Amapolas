@@ -79,30 +79,30 @@ const recuperoLS = () => {
 
 // En index.html consulto el LS guardado
 if(pagPrin === "pag_principal"){
-    if(localStorage.getItem('listaProductos')){
-        arrayPedido = JSON.parse(localStorage.getItem("listaProductos"))
-        carritoPreliminar();
-    }
+    localStorage.getItem('listaProductos') && (arrayPedido = JSON.parse(localStorage.getItem("listaProductos")), carritoPreliminar())
 }
+
+
 
 // muestro en index.html el carrito preliminar
 function carritoPreliminar() {
     if (arrayPedido != undefined){
         for (const detallePedido of arrayPedido) {
+            const { productoPedido, cantidadPedido, precioPedido} = detallePedido
             let contenedor = document.createElement("tr");
             indexBoton = arrayPedido.indexOf(detallePedido)
-            total= (detallePedido.precioPedido * detallePedido.cantidadPedido);
+            total= (precioPedido * cantidadPedido);
             totalFinal +=total;
             mensaje = `<tr>
-                        <td>${detallePedido.productoPedido.toUpperCase()}</td>
+                        <td>${productoPedido.toUpperCase()}</td>
                         <td class="cantidad_producto" >
                             <button class="btn_suma" data-id="${indexBoton}" onclick="sumaProductoPrevio(this)"><img src="./imagenes/iconos/mas.png" alt="icono suma" width="20" height="20"></button>
-                            ${detallePedido.cantidadPedido}
+                            ${cantidadPedido}
                             <button class="btn_resta" data-id="${indexBoton}" onclick="restaProductoPrevio(this)"><img src="./imagenes/iconos/menos.png" alt="icono menos" width="20" height="20"></button>
                         </td>
-                        <td>$${detallePedido.precioPedido}</td>
-                        <td>$${detallePedido.precioPedido*detallePedido.cantidadPedido}</td>
-                        <button id="${detallePedido.productoPedido}" class="borrar-producto" onclick="eliminarProductoPrevio(this)" data-id="${detallePedido.productoPedido}"><img src="./imagenes/iconos/eliminar.png" alt="icono eliminar" width="20" height="20"></button>
+                        <td>$${precioPedido}</td>
+                        <td>$${precioPedido*cantidadPedido}</td>
+                        <button id="${productoPedido}" class="borrar-producto" onclick="eliminarProductoPrevio(this)" data-id="${productoPedido}"><img src="./imagenes/iconos/eliminar.png" alt="icono eliminar" width="20" height="20"></button>
                     </tr>`
             
             contenedor.innerHTML = mensaje;
@@ -217,9 +217,7 @@ function restaProductoPrevio(x){
     botonResta.forEach(e =>{
         let indexBtnResta = e.getAttribute('data-id');
         if(idBotonResta == indexBtnResta ){
-            if(arrayPedido[indexBtnResta].cantidadPedido>0){
-                arrayPedido[indexBtnResta].cantidadPedido -= 1
-            } 
+            arrayPedido[indexBtnResta].cantidadPedido>0? (arrayPedido[indexBtnResta].cantidadPedido -= 1) : console.log('es cero');
             console.log(e);
             limpiarPrevioHtml();
             carritoPreliminar();
@@ -233,7 +231,6 @@ function restaProductoPrevio(x){
 // funcion aplicada al boton finalizar compra del carrito en index.html, guarda en LS
 const guardaPedido = () =>{
     guardoLS();
-
 }
 
 recuperoLS();
