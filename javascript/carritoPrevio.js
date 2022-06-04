@@ -5,7 +5,6 @@ let opcion = "";
 let totalFinal = 0;
 let total = 0;
 let importeACobrar = 0;
-let codigoDescuento = "";
 let nuevoPedido;
 let ticket = "";
 let zona = "";
@@ -110,7 +109,7 @@ function carritoPreliminar() {
             carritoPrevio.appendChild(contenedor);
         }
         totalProductosPrevio.innerHTML = `<p>Total  $${totalFinal}</p>
-        <a href="./pages/carrito_compra.html"><button class="btn" onclick="guardaPedido()">Finalizar compra</button></a> `;
+        <a href="./pages/carrito_compra.html"><button class="btn" onclick="guardaPedido()">Ir a mi Carrito</button></a> `;
         carritoTotal.innerHTML = `$${totalFinal}`;
 }
 }

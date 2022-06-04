@@ -36,8 +36,8 @@ function carritoHtml() {
                         <td>$${detallePedido.precioPedido}</td>
                         <td>$${detallePedido.precioPedido*detallePedido.cantidadPedido}</td>
                         <button id ="${detallePedido.productoPedido}" class="borrar-producto" onclick="eliminarProducto(this)" data-id="${detallePedido.productoPedido}"><img src="./../imagenes/iconos/eliminar.png" alt="icono eliminar" width="20" height="20"></button>
-                        
-                    </tr>`
+                        </tr>
+                        `
             
             contenedor.innerHTML = mensaje;
             detalleMiPedido.appendChild(contenedor);
@@ -133,7 +133,7 @@ function opcionEnvio(){
 		
 	if (seleccion == "2"){
         envioDomicilio.style.display="block";
-		
+        
 	} else{
 		envioDomicilio.style.display="none";
         costoEnvio=0;
@@ -150,8 +150,55 @@ function opcionDomicilio(a){
         costoEnvio = consultaPrecio.precioEnvio;
         contenedorTotal.innerHTML = `<p>Total: ${totalFinal + costoEnvio}</p>`
         verTotal.appendChild(contenedorTotal);
+		return costoEnvio;
     }
 }
+
+
+console.log(importeACobrar)
+let claveDescuento = 'AMAPOLASOFF';
+let codigoDescuento = document.getElementById('codigo_descuento');
+const btnDescuento = document.getElementById('btn_descuento')
+function codigoOk () {
+    Toastify({
+        text: "Se aplico el descuento",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+    }).showToast();
+
+}
+function codigoFail () {
+    Toastify({
+        text: "El código ingresado no es valido",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(to right, #E74C3C , #F5B7B1)",
+        },
+    }).showToast();
+
+}
+const aplicaDescuento = () => {
+    codigoDescuento.value.toUpperCase() === claveDescuento? totalFinal *=0.8 : console.log('error');
+    codigoDescuento.value.toUpperCase() === claveDescuento? codigoOk() : codigoFail();
+    importeACobrar = totalFinal + costoEnvio;
+    console.log(importeACobrar)
+}
+
+
+
+
 
 const confirmarPago = document.getElementById('pagar')
 confirmarPago.addEventListener('click', () =>{
