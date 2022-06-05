@@ -10,11 +10,3 @@ navToggle.addEventListener("click", () => {
 
 });
 
-const btnConsulta = document.getElementById('btn_contacto')
-btnConsulta.addEventListener('click', () =>{
-    Swal.fire({
-        icon: 'info',
-        title: 'Su consulta ha sido enviada',
-        text: 'Estaremos respondiendo pronto!'
-    })
-})
