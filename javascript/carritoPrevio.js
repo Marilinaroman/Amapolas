@@ -108,8 +108,9 @@ function carritoPreliminar() {
             contenedor.innerHTML = mensaje;
             carritoPrevio.appendChild(contenedor);
         }
-        totalProductosPrevio.innerHTML = `<p>Total  $${totalFinal}</p>
-        <a href="./pages/carrito_compra.html"><button class="btn" onclick="guardaPedido()">Ir a mi Carrito</button></a> `;
+        totalProductosPrevio.innerHTML = `<p> Total  $${totalFinal}</p>
+            <a href="./pages/carrito_compra.html"><button class="btn" onclick="guardaPedido()">Ir a mi Carrito</button></a>
+            <button class="btn" onclick="vaciarCarrito()">Vaciar Carrito</button>`;
         carritoTotal.innerHTML = `$${totalFinal}`;
 }
 }
@@ -233,5 +234,14 @@ const guardaPedido = () =>{
     guardoLS();
 }
 
-recuperoLS();
+// Funcion aplicada al boton Vaciar Carrito del index.html, vacia LS
+const vaciarCarrito = () =>{
+    localStorage.clear('listaProductos');
+    arrayPedido.length = []
+    limpiarPrevioHtml();
+    carritoPreliminar();
+    console.log(arrayPedido)
+}
+
+
 

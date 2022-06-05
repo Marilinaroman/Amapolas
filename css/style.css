@@ -67,13 +67,19 @@ header {
       header nav .carrito_visible .navbar-item-link {
         color: white;
         line-height: 4rem; }
-      header nav .carrito_visible .btn a {
-        text-decoration: none;
-        box-shadow: none;
-        color: #000; }
       header nav .carrito_visible .btn_resta, header nav .carrito_visible .btn_suma, header nav .carrito_visible .borrar-producto {
         border: none;
         background-color: transparent; }
+      header nav .carrito_visible #total_productos_previo p {
+        font-weight: bold; }
+      header nav .carrito_visible #total_productos_previo div {
+        width: 100%;
+        display: grid; }
+        header nav .carrito_visible #total_productos_previo div .btn, header nav .carrito_visible #total_productos_previo div a {
+          margin: 0 0.75rem 0.75rem 0;
+          text-decoration: none;
+          box-shadow: none;
+          color: #000; }
 
 .imagen_principal {
   margin-bottom: 1rem; }
@@ -160,6 +166,8 @@ footer {
       display: none; }
     .contenido .contenido_categorias .contenido_categoria .formulario_pago .tarjeta_visible {
       display: block; }
+      .contenido .contenido_categorias .contenido_categoria .formulario_pago .tarjeta_visible div {
+        margin-bottom: 0.5rem; }
     .contenido .contenido_categorias .contenido_categoria select {
       margin: 1rem; }
     .contenido .contenido_categorias .contenido_categoria .btn_suma, .contenido .contenido_categorias .contenido_categoria .btn_resta, .contenido .contenido_categorias .contenido_categoria .borrar-producto {

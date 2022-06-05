@@ -75,13 +75,13 @@
                                         <th id="total_productos"></th>
                                     </table>
                                 </table>
-                                <a href="./../index.html"><button class="btn">Seguir comprando</button></a>
-                                <button class="btn">Finalizar compra</button>
+                                <a href="./../index.html"><button class="btn" onclick="actualizarLS()">Seguir comprando</button></a>
+                                <button class="btn" id="termina_compra" onclick="finalizarCompra()">Finalizar compra</button>
                             </div>
                         </div>
     
-                        <div class="contenido_categorias" data-categoria="envio">
-                            <div  class="contenido_categoria">
+                        <div class="contenido_categorias" data-categoria="envio" >
+                            <div class="contenido_categoria">
                                 <select class="form-select opciones_envio" aria-label="Default select example" onchange="opcionEnvio()">
                                     <option selected>Opciones de Envío</option>
                                     <option value="0">Retiro en Tienda - Gratis</option>
@@ -94,14 +94,9 @@
                                     <option class="envio_dom_opcion" value="3">Zona Sur - $450</option>
                                     <option class="envio_dom_opcion" value="4">Zona Oeste - $500</option>
                                 </select>
-                                <div id="ver_total">
-                                </div>
-                                <button class="btn" id="confirma_compra"> Confirmar</button>
-                                <!-- FALTA AGREGAR: 
-                                    - validar que se haya seleccionado Opcion de Envio
-                                    - Redireccionamiento a Metodos de pago  -->
-                                
-                            </div>
+                                <div id="ver_total"></div>
+                                <button class="btn" id="confirma_compra" onclick="confirmaEnvio()"> Confirmar</button>   
+                            </div>                           
                         </div>
     
                         <div class="contenido_categorias" data-categoria="pago">
@@ -124,35 +119,32 @@
                                         <div class="card px-4">
                                             <p class="h8 py-3">Metodo de pago</p>
                                             
-                                            <div class="row gx-3">
+                                            <form class="row gx-3">
                                                 <div class="col-12">
                                                     <div class="d-flex flex-column">
                                                         <p class="text mb-1">Nombre</p>
-                                                        <input class="form-control mb-3" type="text" placeholder="Nombre que figura en la tarjeta" required>
+                                                        <input class="nombre_tarjeta form-control mb-3" placeholder="Nombre que figura en la tarjeta" id="nombre_tarjeta" type="text" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="d-flex flex-column">
                                                         <p class="text mb-1">Número de Tarjeta</p>
-                                                        <input class="numeros_tarjeta form-control mb-3" placeholder="1234 5678 9101 1121"  required>
+                                                        <input class="numeros_tarjeta form-control mb-3" placeholder="1234 5678 9101 1121" id="numeros_tarjeta" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="d-flex flex-column">
                                                         <p class="text mb-1">Fecha de Expiración</p>
-                                                        <input class="fecha_tarjeta form-control mb-3" placeholder="MM/YY" required>
+                                                        <input class="fecha_tarjeta form-control mb-3" placeholder="MM/YY" id="fecha_tarjeta" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="d-flex flex-column">
                                                         <p class="text mb-1">CVV/CVC</p>
-                                                        <input class="form-control mb-3 pt-2 " type="password" placeholder="***" maxlength="3" required>
+                                                        <input class="form-control mb-3 pt-2 " type="password" id="pass_tarjeta" placeholder="***" maxlength="3" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-12">
-                                                        
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                     

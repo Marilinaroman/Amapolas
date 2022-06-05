@@ -2,8 +2,8 @@
 
 let verTotal = document.querySelector("#ver_total");
 let detalleMiPedido = document.querySelector("#detalle_mi_pedido");
-let totalProductos = document.querySelector("#total_productos")
-let contenedorTotal
+let totalProductos = document.querySelector("#total_productos");
+let contenedorTotal;
 let botonInfo;
 const carritoHTML = document.querySelector('#detalle_mi_pedido');
 
@@ -16,6 +16,24 @@ let valorEnvio = 0;
 let seleccion;
 let seleccionDomicilio;
 let contenedor;
+
+// Variables del descuento
+let claveDescuento = 'AMAPOLASOFF';
+let codigoDescuento = document.getElementById('codigo_descuento');
+const btnDescuento = document.getElementById('btn_descuento');
+
+// Variables de la tarjeta
+let nombreTarjeta = document.getElementById('nombre_tarjeta');
+let numeroTarjeta = document.getElementById('numeros_tarjeta');
+let fechaTarjeta = document.getElementById('fecha_tarjeta');
+let passTarjeta = document.getElementById('pass_tarjeta');
+
+// Variables de los alert
+const confirmarPago = document.getElementById('pagar');
+const cancelarCompra = document.getElementById('cancelar_compra');
+
+// Recupero el carrito del LS
+localStorage.getItem('listaProductos')? recuperoLS() : console.log('error');
 
 // Genero en carrito_compra.html el detalle final del carrito
 function carritoHtml() {
@@ -62,8 +80,6 @@ function limpiarHTML() {
     }
     contenedorTotal.removeChild(contenedorTotal.firstChild);
 }
-
-
 
 
 // Funcion para eliminar pedidos en carrito_compra.html
@@ -125,6 +141,10 @@ function restaProducto(x){
     return carritoFinal
 };
 
+// Actualizar LS
+const actualizarLS = () =>{
+    localStorage.setItem('listaProductos', JSON.stringify(carritoFinal))
+}
 
 // funcion para seleccionar el tipo de envio
 function opcionEnvio(){
@@ -155,9 +175,7 @@ function opcionDomicilio(a){
 
 
 console.log(importeACobrar)
-let claveDescuento = 'AMAPOLASOFF';
-let codigoDescuento = document.getElementById('codigo_descuento');
-const btnDescuento = document.getElementById('btn_descuento');
+
 
 //Funcion para generar el alert de código de descuento correcto
 const codigoOk = () => {
@@ -201,21 +219,21 @@ const aplicaDescuento = () => {
 }
 
 
-
-
 // Alert que se genera al confirmar el pago
-const confirmarPago = document.getElementById('pagar')
+
 confirmarPago.addEventListener('click', () =>{
-    Swal.fire({
+    let datosOk = (nombreTarjeta.value && numeroTarjeta.value && fechaTarjeta.value && passTarjeta.value) || datosTarjeta.classList.contains('oculta')
+    datosOk? Swal.fire({
         icon: 'success',
         title: 'Gracias por su compra!',
         text: 'Recibimos su pedido exitosamente',
         timer: 5000
-    })
+    }) :
+    console.log('error');
 })
 
 //Alert que se genera al cancelar el pago
-const cancelarCompra = document.getElementById('cancelar_compra')
+
 cancelarCompra.addEventListener('click', () =>{
     Swal.fire({
         icon: 'error',

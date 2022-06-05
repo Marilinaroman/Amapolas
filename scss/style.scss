@@ -83,14 +83,24 @@ header{
                     color:white;
                     line-height: 4rem;
                 }
-                .btn a{
-                    text-decoration: none;
-                    box-shadow: none;
-                    color: #000;
-                }
                 .btn_resta, .btn_suma, .borrar-producto{
                     border:none;
                     background-color: transparent;
+                }
+                #total_productos_previo{
+                    p{
+                        font-weight: bold;
+                    }
+                    div{
+                        width: 100%;
+                        display: grid;
+                        .btn, a{
+                            margin: 0 0.75rem 0.75rem 0;
+                            text-decoration: none;
+                            box-shadow: none;
+                            color: #000;
+                        }
+                    }
                 }
             }
     }
@@ -201,7 +211,10 @@ footer{
                     display: none;
                 }
                 .tarjeta_visible{
-                        display:block
+                        display:block;
+                        div{
+                            margin-bottom: 0.5rem;
+                        }
                     }
                 
             }
