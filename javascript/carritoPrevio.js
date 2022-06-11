@@ -236,11 +236,21 @@ const guardaPedido = () =>{
 
 // Funcion aplicada al boton Vaciar Carrito del index.html, vacia LS
 const vaciarCarrito = () =>{
-    localStorage.clear('listaProductos');
-    arrayPedido.length = []
-    limpiarPrevioHtml();
-    carritoPreliminar();
-    console.log(arrayPedido)
+    Swal.fire({
+        title: 'Estas seguro que deseas vaciar el carrito?',
+        showDenyButton: true,
+        confirmButtonText: 'Sí',
+        denyButtonText: `No`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire('Tu carrito esta vacio!', '', 'success')
+                localStorage.clear('listaProductos');
+                arrayPedido.length = []
+                limpiarPrevioHtml();
+                carritoPreliminar();
+                console.log(arrayPedido)
+            } 
+        })
 }
 
 
