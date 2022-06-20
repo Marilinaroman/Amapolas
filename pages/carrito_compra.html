@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="carrito, amapolas">
+    <meta name="description" content="Tu carrito de compras de nuestra pasteleria te esta esperando">
     <title>Mi cuenta</title>
     <link rel="shortcut icon" href="./../imagenes/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Fredoka&family=Lora:ital@1&family=Mukta:wght@200&family=Smooch+Sans:wght@600&display=swap" rel="stylesheet">
@@ -18,7 +20,9 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script defer src="./../javascript/tarjeta.js"></script>
+    <script defer src="./../javascript/whatsapp.js"></script>
 </head>
 <body>
     <div  class="container-fluid">
@@ -60,7 +64,7 @@
                         <div  class="contenido_categorias activo" data-categoria="mi_pedido">
                             <div class="contenido_categoria activa" id="carrito">
                                 <table class="table table-responsive table-bordered">
-                                    <table class="table table-hover">
+                                    <table class="table table-hover" id="tabla_carrito">
                                         <thead>
                                             <tr >
                                                 <th class="col-4">Producto</th>
@@ -68,11 +72,15 @@
                                                 <th>Precio</th>
                                                 <th>Total</th>
                                             </tr>
-                                                    
                                         </thead>
                                         <tbody id="detalle_mi_pedido">
                                         </tbody>
-                                        <th id="total_productos"></th>
+                                        <tbody>
+                                            <tr>
+                                                <th>Total</th>
+                                                <td colspan="4" id="total_productos"></td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </table>
                                 <a href="./../index.html"><button class="btn" onclick="actualizarLS()">Seguir comprando</button></a>
@@ -134,13 +142,13 @@
                                                 <div class="col-6">
                                                     <div class="d-flex flex-column">
                                                         <p class="text mb-1">Fecha de Expiración</p>
-                                                        <input class="fecha_tarjeta form-control mb-3" placeholder="MM/YY" id="fecha_tarjeta" required>
+                                                        <input class="fecha_tarjeta form-control mb-3" placeholder="MM/YYYY" id="fecha_tarjeta" onchange="controlFecha()"required>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="d-flex flex-column">
                                                         <p class="text mb-1">CVV/CVC</p>
-                                                        <input class="form-control mb-3 pt-2 " type="password" id="pass_tarjeta" placeholder="***" maxlength="3" required>
+                                                        <input class="form-control mb-3 pt-2" type="password" id="pass_tarjeta" placeholder="***" onchange="controlPassTarjeta()" maxlength="3" required>
                                                     </div>
                                                 </div>
                                             </form>
@@ -149,7 +157,6 @@
                                     
                                 </div>
                                 <button class="btn" id="pagar">Pagar</button>
-                                <button class="btn" id="cancelar_compra"> Cancelar</button>
                             </div>
                         </div>
                     </div>
@@ -163,37 +170,23 @@
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <h3 class="text-uppercase fw-bold mb-4">Amapolas</h3>
                     <img src="./../imagenes/quienes_somos/pasteleria_4.jpg" class="img-fluid rounded mx-auto" width="200rem" alt="foto de nosotros">
-                    <p>
-                    Here you can use rows and columns to organize your footer content. Lorem ipsum
-                    dolor sit amet, consectetur adipisicing elit.
-                    </p>
+                    <p><img src="./../imagenes/iconos/ubicacion.png" alt="icono de ubicacion" width="24" height="24">Pasteleria Amapolas Av. siempre viva 123</p>
                 </div>
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
-                    <h3 class="text-uppercase fw-bold mb-4">
-                    Productos
-                    </h3>
-                    <p>
-                    <a href="./../index.html#desayunos" class="text-reset">Desayunos</a>
-                    </p>
-                    <p>
-                    <a href="./../index.html#tortas" class="text-reset">Tortas</a>
-                    </p>
+                    <h3 class="text-uppercase fw-bold mb-4">Productos</h3>
+                    <p><a href="./../index.html#desayunos" class="text-reset">Desayunos</a></p>
+                    <p><a href="./../index.html#tortas" class="text-reset">Tortas</a></p>
                 </div>
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <!-- Redes -->
-                    <h3 class="text-uppercase fw-bold mb-4">
-                    Contactanos
-                    </h3>
+                    <h3 class="text-uppercase fw-bold mb-4">Contactanos</h3>
                     <div>
-                        <a href="" class="me-4 text-reset">
-                        <i class="fab fa-facebook-f"></i>
+                        <a href="https://es-la.facebook.com/" class="me-4 text-reset" target="_blank"><img src="./../imagenes/iconos/facebook.png" alt="icono facebook" width="32" height="32">
                         </a>
-                        <a href="" class="me-4 text-reset">
-                        <i class="fab fa-twitter"></i>
+                        <a class="me-4 text-reset" target="_blank" id="WSP" onclick="mensajeWsp()" href=""><img src="./../imagenes/iconos/whatsapp.png" alt="icono whatsapp" width="32" height="32">
                         </a>
-                        <a href="" class="me-4 text-reset">
-                        <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/" class="me-4 text-reset" target="_blank"><img src="./../imagenes/iconos/instagram.png" alt="icono instagram" width="32" height="32">
                         </a>
                     </div>
                 </div>

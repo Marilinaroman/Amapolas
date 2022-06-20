@@ -35,6 +35,7 @@ const cancelarCompra = document.getElementById('cancelar_compra');
 // Recupero el carrito del LS
 localStorage.getItem('listaProductos')? recuperoLS() : console.log('error');
 
+
 // Genero en carrito_compra.html el detalle final del carrito
 function carritoHtml() {
     
@@ -60,16 +61,16 @@ function carritoHtml() {
             
             contenedor.innerHTML = mensaje;
             detalleMiPedido.appendChild(contenedor);
-
         }   
-        totalProductos.innerHTML = `<p>Total  $${totalFinal}</p>`;
+        totalProductos.innerHTML = `$${totalFinal}`;
+        
+        // Total en seccion Envio
         contenedorTotal = document.createElement("div");
         let totalHtml = `<p>Total: ${totalFinal}</p>`;
         contenedorTotal.innerHTML = totalHtml;
         verTotal.appendChild(contenedorTotal);
     }
 }
-
 carritoHtml()
 
 // Funcion para limpiar pedido en carrito_compra.html
@@ -209,36 +210,88 @@ const codigoFail = () => {
     }).showToast();
 }
 
-
+let descuento = 0;
 // Funcion que se ejecuta cuando aplica el codigo de descuento
 const aplicaDescuento = () => {
-    codigoDescuento.value.toUpperCase() === claveDescuento? totalFinal *=0.8 : console.log('error');
+    codigoDescuento.value.toUpperCase() === claveDescuento? descuento = totalFinal * 0.2 : descuento = 0;
     codigoDescuento.value.toUpperCase() === claveDescuento? codigoOk() : codigoFail();
-    importeACobrar = totalFinal + costoEnvio;
-    console.log(importeACobrar)
+    return descuento
+
 }
+
+let msjAlerta  = document.querySelector('#tabla_carrito').cloneNode(true);
+
+//Elimina botones
+const eliminaBoton = () =>{
+    let botones = msjAlerta.getElementsByTagName('button')
+    for (e of botones){
+        e.classList.add('d-none')
+    }
+    
+    return msjAlerta
+}
+
+//Agrega info
+const agregaInfo = () =>{
+    let masInfo = document.createElement('tbody');
+    info = `<tr>
+                    <th scope="row">Costo Envio</th>
+                    <td colspan="4">$${costoEnvio}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Descuento Aplicado</th>
+                    <td colspan="4">$${descuento}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total a Pagar</th>
+                    <td colspan="4">$${totalFinal - descuento + costoEnvio}</td>
+                </tr>`
+    masInfo.innerHTML = info;
+    msjAlerta.appendChild(masInfo);
+    return msjAlerta
+}
+
 
 
 // Alert que se genera al confirmar el pago
 
 confirmarPago.addEventListener('click', () =>{
     let datosOk = (nombreTarjeta.value && numeroTarjeta.value && fechaTarjeta.value && passTarjeta.value) || datosTarjeta.classList.contains('oculta')
+    
+    // mensaje
+    let spanAlerta = document.createElement('span')
+    eliminaBoton();
+    agregaInfo();
+    spanAlerta.appendChild(msjAlerta);
+
     datosOk? Swal.fire({
-        icon: 'success',
-        title: 'Gracias por su compra!',
-        text: 'Recibimos su pedido exitosamente',
-        timer: 5000
-    }) :
+        title: 'Estas por confirmar la siguiente compra:',
+        html:spanAlerta,
+        showDenyButton: true,
+        confirmButtonText: 'Confirmar',
+        denyButtonText: `Cancelar`,
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Gracias por su compra!',
+                text: 'Recibimos su pedido exitosamente',
+                timer: 5000,
+                showConfirmButton: false
+            })
+        } else if (result.isDenied) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Su compra ha sido cancelada',
+                text: 'Esperamos que vuelvas pronto!',
+                timer: 5000,
+                showConfirmButton: false
+            })
+        }
+        }).then(function(){
+            setTimeout(() => {
+                window.location ="./../index.html"
+            }, 2000);
+        }):
     console.log('error');
-})
-
-//Alert que se genera al cancelar el pago
-
-cancelarCompra.addEventListener('click', () =>{
-    Swal.fire({
-        icon: 'error',
-        title: 'Su compra ha sido cancelada',
-        text: 'Esperamos que vuelvas pronto!',
-        timer: 5000
-    })
 })

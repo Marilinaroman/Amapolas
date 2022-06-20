@@ -55,12 +55,12 @@ header {
       top: 60px;
       width: 50%;
       height: auto;
-      overflow-y: auto;
       transition: left 0.3s;
       border-radius: 0.5rem;
       border-color: #d6f3a0;
       border-width: 0.25rem;
-      border-style: solid; }
+      border-style: solid;
+      overflow-y: scroll; }
     header nav .carrito_visible {
       right: 0;
       display: block; }
@@ -122,6 +122,9 @@ header {
 
 footer {
   background-image: linear-gradient(to bottom, #ffffff, #fbf8fc, #fbf0f7, #fce8ee, #fde1e2, #fddddd, #fed8d7, #fed4d1, #ffd2d6, #ffd0dc, #fecee3, #faceeb); }
+  footer a {
+    text-decoration: none;
+    box-shadow: none; }
 
 .categorias {
   display: grid;
@@ -215,6 +218,8 @@ footer {
   #quienes_somos #formulario .carousel {
     display: grid;
     align-items: center; }
+  .cuenta {
+    height: auto; }
   #carrito_compra .categorias {
     grid-template-columns: 1fr 1fr; }
     #carrito_compra .categorias .categoria {

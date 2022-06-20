@@ -109,7 +109,7 @@ function carritoPreliminar() {
             carritoPrevio.appendChild(contenedor);
         }
         totalProductosPrevio.innerHTML = `<p> Total  $${totalFinal}</p>
-            <a href="./pages/carrito_compra.html"><button class="btn" onclick="guardaPedido()">Ir a mi Carrito</button></a>
+            <a href="./pages/cuenta.html"><button class="btn" onclick="guardaPedido()">Ir a mi Carrito</button></a>
             <button class="btn" onclick="vaciarCarrito()">Vaciar Carrito</button>`;
         carritoTotal.innerHTML = `$${totalFinal}`;
 }
@@ -147,6 +147,19 @@ function consultaArrayPedido (){
         
 }
 
+//Mensaje de producto agregado
+function msj(x){
+    x.innerHTML=`<div class="d-flex">
+                    <img src="./imagenes/favicon.png" alt="foto muffin mini" height="30" widght="20">
+                    <p class="text-uppercase fw-bold" style="color: white">Agregado...</p>
+                </div>`
+    setTimeout(() => {
+        x.innerHTML=`Comprar`;
+    }, 1000);
+};
+
+
+
 // con cada boton de compra alimento el array de pedidos
 botonCompra.forEach(button =>{
         button.addEventListener("click", ()=>{
@@ -154,7 +167,7 @@ botonCompra.forEach(button =>{
         buscarProducto = productos.find((buscaProducto) => buscaProducto.id == idCompra);
         productoPedido = buscarProducto.producto;
         precioPedido = buscarProducto.idPrecio;
-        consultaArrayPedido()
+        consultaArrayPedido();
         return arrayPedido;
     }) 
     return arrayPedido;

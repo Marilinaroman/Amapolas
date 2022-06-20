@@ -103,15 +103,13 @@ function loguearme(){
 			if (mailConsulta != mailAValidar || contraseñaAValidar !=contraseñaConsulta){
 				mensajeDeValidacion.innerHTML = `El nombre de usuario y/o la contraseña que ingresaste son incorrectos.`
 			} else if(mailConsulta === mailAValidar && contraseñaAValidar === contraseñaConsulta) {
-				mensajeDeValidacion.innerHTML = `¡Bienvenido/a!`
-				btnInicioSesion.addEventListener('click', (e)=>{
-					e.preventDefault();
-					if(checkbox.checked){
-						guardoClienteLS();
-					}
-				})
-				
+				setTimeout(() => {
+					window.location ="./carrito_compra.html"
+				}, 100);
 			}
+		}
+		if(checkbox.checked){
+			guardoClienteLS();
 		}
 		
 	}
