@@ -45,8 +45,12 @@ function enviarFormulario(e) {
                 btnFormulario.value = 'Enviar';
                 Swal.fire({
                     icon: 'success',
+                    iconColor:'#fad8ce',
                     title: 'Su consulta ha sido enviada',
-                    text: 'Estaremos respondiendo pronto!'
+                    text: 'Estaremos respondiendo pronto!',
+                    customClass:{
+                        confirmButton:'btn_4'
+                    }
                 })
                 this.reset();
             } else {

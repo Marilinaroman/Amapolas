@@ -103,14 +103,19 @@ header {
   box-shadow: 2px 2px 5px #999; }
 
 .btn {
+  box-shadow: none;
   background-color: #d1e9a3;
   color: black;
   border-color: #d1e9a3; }
-  .btn:focus {
-    border: none;
+  .btn:focus, .btn:active {
+    box-shadow: none;
+    background-color: #d1e9a3;
+    color: black;
+    border-color: #d1e9a3; }
+  .btn:hover {
+    box-shadow: none;
     background-color: #fad8ce;
-    border-color: #fad8ce;
-    outline: none !important; }
+    border-color: #fad8ce; }
 
 #quienes_somos .nosotros {
   margin-top: 5rem; }
@@ -181,6 +186,21 @@ footer {
 
 .contenido .activo {
   display: grid; }
+
+.swal2-popup .btn, .swal2-popup .btn_2, .swal2-popup .btn_3, .swal2-popup .btn_4 {
+  box-shadow: none !important;
+  background-color: #d1e9a3 !important;
+  color: black !important;
+  border-color: #d1e9a3 !important; }
+  .swal2-popup .btn:focus, .swal2-popup .btn:active, .swal2-popup .btn_2:focus, .swal2-popup .btn_2:active, .swal2-popup .btn_3:focus, .swal2-popup .btn_3:active, .swal2-popup .btn_4:focus, .swal2-popup .btn_4:active {
+    box-shadow: none !important;
+    background-color: #d1e9a3 !important;
+    color: black !important;
+    border-color: #d1e9a3 !important; }
+  .swal2-popup .btn:hover, .swal2-popup .btn_2:hover, .swal2-popup .btn_3:hover, .swal2-popup .btn_4:hover {
+    box-shadow: none !important;
+    background-color: #fad8ce !important;
+    border-color: #fad8ce !important; }
 
 @media only screen and (max-width: 768px) {
   header nav {

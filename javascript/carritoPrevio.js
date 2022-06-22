@@ -96,9 +96,9 @@ function carritoPreliminar() {
             mensaje = `<tr>
                         <td>${productoPedido.toUpperCase()}</td>
                         <td class="cantidad_producto" >
-                            <button class="btn_suma" data-id="${indexBoton}" onclick="sumaProductoPrevio(this)"><img src="./imagenes/iconos/mas.png" alt="icono suma" width="20" height="20"></button>
-                            ${cantidadPedido}
                             <button class="btn_resta" data-id="${indexBoton}" onclick="restaProductoPrevio(this)"><img src="./imagenes/iconos/menos.png" alt="icono menos" width="20" height="20"></button>
+                            ${cantidadPedido}
+                            <button class="btn_suma" data-id="${indexBoton}" onclick="sumaProductoPrevio(this)"><img src="./imagenes/iconos/mas.png" alt="icono suma" width="20" height="20"></button>
                         </td>
                         <td>$${precioPedido}</td>
                         <td>$${precioPedido*cantidadPedido}</td>
@@ -253,10 +253,21 @@ const vaciarCarrito = () =>{
         title: 'Estas seguro que deseas vaciar el carrito?',
         showDenyButton: true,
         confirmButtonText: 'Sí',
-        denyButtonText: `No`,
+        cancelButtonText: 'No!',
+        customClass:{
+            confirmButton:'btn',
+            denyButton:'btn'
+        }
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire('Tu carrito esta vacio!', '', 'success')
+                Swal.fire({
+                    title: 'Tu carrito esta vacio!',
+                    icon: 'success',
+                    iconColor:'#fad8ce',
+                    customClass:{
+                        confirmButton:'btn_2',
+                    }
+                })
                 localStorage.clear('listaProductos');
                 arrayPedido.length = []
                 limpiarPrevioHtml();

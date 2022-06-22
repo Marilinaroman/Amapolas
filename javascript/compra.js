@@ -49,9 +49,9 @@ function carritoHtml() {
             mensaje = `<tr>
                         <td>${productoPedido.toUpperCase()}</td>
                         <td class="cantidad_producto" >
-                            <button class="btn_suma" data-id="${indexBoton}" onclick="sumaProducto(this)"><img src="./../imagenes/iconos/mas.png" alt="icono suma" width="20" height="20"></button>
-                            ${cantidadPedido}
                             <button class="btn_resta" data-id="${indexBoton}" onclick="restaProducto(this)"><img src="./../imagenes/iconos/menos.png" alt="icono menos" width="20" height="20"></button>
+                            ${cantidadPedido}
+                            <button class="btn_suma" data-id="${indexBoton}" onclick="sumaProducto(this)"><img src="./../imagenes/iconos/mas.png" alt="icono suma" width="20" height="20"></button>
                         </td>
                         <td>$${precioPedido}</td>
                         <td>$${precioPedido*cantidadPedido}</td>
@@ -219,7 +219,7 @@ const aplicaDescuento = () => {
 
 }
 
-let msjAlerta  = document.querySelector('#tabla_carrito').cloneNode(true);
+let msjAlerta  = document.querySelector('#tabla_carrito')
 
 //Elimina botones
 const eliminaBoton = () =>{
@@ -231,7 +231,7 @@ const eliminaBoton = () =>{
     return msjAlerta
 }
 
-//Agrega info
+//Agrega info al alert de confirmacion de compra
 const agregaInfo = () =>{
     let masInfo = document.createElement('tbody');
     info = `<tr>
@@ -269,11 +269,17 @@ confirmarPago.addEventListener('click', () =>{
         html:spanAlerta,
         showDenyButton: true,
         confirmButtonText: 'Confirmar',
-        denyButtonText: `Cancelar`,
+        denyButtonText: 'Cancelar',
+        allowOutsideClick:false,
+        customClass:{
+            confirmButton:'btn_3',
+            denyButton:'btn_3'
+        }
         }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
                 icon: 'success',
+                iconColor:'#fad8ce',
                 title: 'Gracias por su compra!',
                 text: 'Recibimos su pedido exitosamente',
                 timer: 5000,
@@ -282,6 +288,7 @@ confirmarPago.addEventListener('click', () =>{
         } else if (result.isDenied) {
             Swal.fire({
                 icon: 'error',
+                iconColor:'#717D7E',
                 title: 'Su compra ha sido cancelada',
                 text: 'Esperamos que vuelvas pronto!',
                 timer: 5000,

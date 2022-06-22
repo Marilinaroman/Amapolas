@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./../css/style.css">
     <script defer src="./../javascript/navbar.js"></script>
     <script defer src="./../javascript/registroLogin.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script defer src="./../javascript/whatsapp.js"></script>
 </head>
 <body>
@@ -52,7 +53,7 @@
                             <input type="checkbox" class="form-check-input" id="recordarme">
                             <label class="form-check-label" for="recordarme">Recordarme</label>
                         </div>
-                        <button type="submit" id="btn_inicio_sesion" class="btn btn-primary" onclick="loguearme()">Iniciar sesión</button>
+                        <button type="submit" id="btn_inicio_sesion" class="btn" onclick="loguearme()">Iniciar sesión</button>
                         <P id="mensaje_validacion"></p>
                     </form>
                 </section>
@@ -67,7 +68,7 @@
                             <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" id="contraseña">
                         </div>
-                            <button type="submit" class="btn btn-primary" onclick="registrarme()">Registrarme</button>
+                            <button type="submit" class="btn" onclick="registrarme()">Registrarme</button>
                             <p id="mensaje_registro"></p>
                         </div>
                     </form>

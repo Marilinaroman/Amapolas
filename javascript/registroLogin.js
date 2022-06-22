@@ -46,6 +46,15 @@ if(localStorage.getItem("clienteRecordar")){
 	document.getElementById("consulta_contraseña").value = clientes[0].contraseña
 }
 
+//Alert de registro exitoso
+const registroOk =()=>{
+	Swal.Fire({
+		icon: 'success',
+		iconColor:'fad8ce',
+  		title: 'Te registraste correctamente!',
+	})
+}
+
 // Defino la funcion que se ejecutará cuando un nuevo cliente quiera registrarse
 function registrarme (){
 
@@ -72,15 +81,16 @@ function registrarme (){
 				contraseña = contraseñaCliente;
 				clientes.push(new registroClientes(idMail,contraseña))
 				guardoRegistroSS();
+				
 				return clientes
 			}
 				return clientes
     }
-	
     return clientes
 	}
-	
 }
+
+
 
 // Defino la funcion de control de login
 function loguearme(){

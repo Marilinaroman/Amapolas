@@ -127,16 +127,22 @@ header{
     box-shadow: 2px 2px 5px #999;
     
 }
+
 .btn{
+    box-shadow: none;
     background-color: #d1e9a3;
     color: black;
     border-color: #d1e9a3;
-    &:focus{
-        border:none;
+    &:focus,&:active{
+        box-shadow: none;
+        background-color: #d1e9a3;
+        color: black;
+        border-color: #d1e9a3;
+    }
+    &:hover{
+        box-shadow: none;
         background-color: #fad8ce;
         border-color: #fad8ce;
-        outline: none !important;
-        
     }
 }
 #quienes_somos {
@@ -239,5 +245,25 @@ footer{
     }
     
 }  
+
+.swal2-popup{
+    .btn, .btn_2, .btn_3,.btn_4{
+        box-shadow: none !important;
+        background-color: #d1e9a3 !important;
+        color: black !important;
+        border-color: #d1e9a3 !important;
+        &:focus,&:active{
+            box-shadow: none !important;
+            background-color: #d1e9a3 !important;
+            color: black !important;
+            border-color: #d1e9a3 !important;
+        }
+        &:hover{
+            box-shadow: none !important;
+            background-color: #fad8ce !important;
+            border-color: #fad8ce !important;
+        }
+    }
+}
 
 @import "mQueries";

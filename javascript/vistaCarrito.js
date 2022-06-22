@@ -28,6 +28,7 @@ pagoTarjeta.addEventListener('click', eligioTarjeta);
 pagoEfectivo.addEventListener('click', eligioEfectivo);
 
 const finalizarCompra = () =>{
+	actualizarLS();
 	categorias[0].classList.remove('activa');
 	categorias[1].classList.add('activa');
 	contenidoCategorias[0].classList.remove('activo');
