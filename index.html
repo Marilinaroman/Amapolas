@@ -7,26 +7,30 @@
     <meta name="keywords" content="Pasteleria, Amapolas">
     <meta name="description" content="Amapolas, Pasteleria casera, desayunos y tortas sin conservantes, hechas con amor!">
     <title>Amapolas</title>
+    <!-- Links -->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Fredoka&family=Lora:ital@1&family=Mukta:wght@200&family=Smooch+Sans:wght@600&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Fredoka&family=Lora:ital@1&family=Mukta:wght@200&family=Smooch+Sans:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!--Script de Alertas -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- Links-->
     <link rel="shortcut icon" href="./imagenes/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- Scripts de JS-->
     <script defer src="./javascript/vistaCarritoIndex.js"></script>
     <script defer src="./javascript/navbar.js"></script>
     <script defer src="./javascript/carritoPrevio.js"></script>
     <script defer src="./javascript/formContacto.js"></script>
     <script defer src="./javascript/whatsapp.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 </head>
 <body id="pag_principal">
     <div class="container-fluid">
-        <header class="sticky-top row">
-            <nav class="sticky-top">
+        <header class="sticky-top">
+            <nav>
                 <button class="nav-toggle-menu" aria-label="Abrir menú desplegable">
                     <img src="./imagenes/iconos/home.png" alt="menu" width="24" height="24">
                 </button>
@@ -38,39 +42,35 @@
                     <li class="nav-item"><a class="navbar-item-link" href="./pages/cuenta.html">Ingresar</a></li>
                 </ul>
                 <div class="carrito_toggle col-1">
-                        <button class="boton_carrito  .d-flex .flex-row"><img src="./imagenes/iconos/carrito-de-compras.png" alt="muestra detalle carrito" width="24" height="24">
+                    <button class="boton_carrito  .d-flex .flex-row"><img src="./imagenes/iconos/carrito-de-compras.png" alt="muestra detalle carrito" width="24" height="24">
                             <span class="badge badge bg-secondary bg-danger total_carrito">$0</span>
-                            <span><i class="fas fa-shopping-cart "></i></span>
-                        </button>
-                        <div class="muestra_carrito">
-                            <table class="table" id="tabla_pedido">
-                                <thead>
-                                    <tr>
-                                        <th class="col-4">Producto</th>
-                                        <th>Cantidad</th>
-                                        <th>Precio</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="detalle_mi_carrito">
-                                </tbody>
-                                
-                            </table>
+                    </button>
+                    <div class="muestra_carrito">
+                        <table class="table" id="tabla_pedido">
+                            <thead>
+                                <tr>
+                                    <th class="col-4">Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detalle_mi_carrito"></tbody>
+                        </table>
                             <div id="total_productos_previo"></div>
-                        </div>
+                    </div>
                 </div>
             </nav>
         </header>
         <main>
             <marquee class="text-center banner_descuento ">¡¡¡Solo por HOY te regalamos un 20% OFF con el codigo AMAPOLASOFF!!!</marquee>
             <img src="./imagenes/imagen_principal.png" class=" imagen_principal img-fluid rounded mx-auto d-block" alt="Imagen principal" >
-            
             <section id="desayunos">
                 <h1 class="titulos text-center"> Desayunos & Meriendas</h1>
                 <div class="container">
                     <div class="row">
                         <div class="card col producto">
-                            <img src="./imagenes/desayunos/banana_split_unidad.jpg" class="card-img-top rounded mx-auto" alt="foto muffin banana split">
+                            <img src="./imagenes/desayunos/banana_split_unidad.jpg" loading="lazy" class="card-img-top rounded mx-auto" alt="foto muffin banana split">
                             <div class="card-body">
                                 <p class="card-title text-uppercase">banana split</p>
                                 <p class="card-text">$100</p>
@@ -78,7 +78,7 @@
                             </div>
                         </div>
                         <div class="card col producto">
-                            <img src="./imagenes/desayunos/lemon_pie_unidad.jpg" class="card-img-top rounded mx-auto" alt="foto muffin lemon pie">
+                            <img src="./imagenes/desayunos/lemon_pie_unidad.jpg" loading="lazy" class="card-img-top rounded mx-auto" alt="foto muffin lemon pie">
                             <div class="card-body">
                                 <p class="card-title text-uppercase">lemon pie</p>
                                 <p class="card-text">$110</p>
@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div class="card col producto">
-                            <img src="./imagenes/desayunos/trufas.jpg" class="card-img-top rounded mx-auto" alt="foto trufas">
+                            <img src="./imagenes/desayunos/trufas.jpg" loading="lazy" class="card-img-top rounded mx-auto" alt="foto trufas">
                             <div class="card-body">
                                 <p class="card-title text-uppercase">trufas</p>
                                 <p class="card-text">$100</p>
@@ -96,28 +96,28 @@
                     </div>
                     <div class="row">
                         <div class="card col producto">
-                            <img src="./imagenes/desayunos/mini_brownie.jpg" class="card-img-top rounded mx-auto" alt="foto mini brownie">
-                                <div class="card-body">
-                                    <p class="card-title text-uppercase">mini brownie</p>
-                                    <p class="card-text">$120</p>
-                                    <button class="btn" data-id-product= "4" onclick="msj(this)">Comprar</button>
-                                </div>
+                            <img src="./imagenes/desayunos/mini_brownie.jpg" loading="lazy" class="card-img-top rounded mx-auto" alt="foto mini brownie">
+                            <div class="card-body">
+                                <p class="card-title text-uppercase">mini brownie</p>
+                                <p class="card-text">$120</p>
+                                <button class="btn" data-id-product= "4" onclick="msj(this)">Comprar</button>
+                            </div>
                         </div>
                         <div class="card col producto">
-                                <img src="./imagenes/desayunos/mini_tarta_del_bosque.jpg" class="card-img-top rounded mx-auto" alt="foto mini tarta del bosque">
-                                <div class="card-body">
-                                    <p class="card-title text-uppercase">mini tarta del bosque</p>
-                                    <p class="card-text">$140</p>
-                                    <button class="btn" data-id-product= "5" onclick="msj(this)">Comprar</button>
-                                </div>
+                            <img src="./imagenes/desayunos/mini_tarta_del_bosque.jpg" loading="lazy" class="card-img-top rounded mx-auto" alt="foto mini tarta del bosque">
+                            <div class="card-body">
+                                <p class="card-title text-uppercase">mini tarta del bosque</p>
+                                <p class="card-text">$140</p>
+                                <button class="btn" data-id-product= "5" onclick="msj(this)">Comprar</button>
+                            </div>
                         </div>
                         <div class="card col producto">
-                            <img src="./imagenes/desayunos/mini_tiramisu.jpg" class="card-img-top rounded mx-auto" alt="foto mini tiramisu">
-                                <div class="card-body">
-                                    <p class="card-title text-uppercase">mini tiramisu</p>
-                                    <p class="card-text">$140</p>
-                                    <button class="btn" data-id-product= "6" onclick="msj(this)">Comprar</button>
-                                </div>
+                            <img src="./imagenes/desayunos/mini_tiramisu.jpg" loading="lazy" class="card-img-top rounded mx-auto" alt="foto mini tiramisu">
+                            <div class="card-body">
+                                <p class="card-title text-uppercase">mini tiramisu</p>
+                                <p class="card-text">$140</p>
+                                <button class="btn" data-id-product= "6" onclick="msj(this)">Comprar</button>
+                            </div>
                         </div>
                     </div>
             </section>
@@ -126,59 +126,59 @@
                 <div class="container">
                     <div class="row">
                         <div class="card col producto">
-                            <img src="./imagenes/tortas/cheesecake.jpg" class="card-img-top rounded mx-auto" alt="foto cheesecake">
+                            <img src="./imagenes/tortas/cheesecake.jpg" loading="lazy" class="card-img-top rounded mx-auto" alt="foto cheesecake">
                             <div class="card-body">
                                 <p class="card-title text-uppercase">cheescake</p>
                                 <p class="card-text">$1.000</p>
                                 <button class="btn" data-id-product= "7" onclick="msj(this)">Comprar</button>
-                                </div>
                             </div>
-                            <div class="card col producto">
-                                <img src="./imagenes/tortas/chocotorta.jpg" class="card-img-top rounded mx-auto" alt="foto chocotorta">
-                                <div class="card-body ">
-                                    <p class="card-title text-uppercase">chocotorta</p>
+                        </div>
+                        <div class="card col producto">
+                            <img src="./imagenes/tortas/chocotorta.jpg" loading="lazy" class="card-img-top rounded mx-auto" alt="foto chocotorta">
+                            <div class="card-body ">
+                                <p class="card-title text-uppercase">chocotorta</p>
                                 <p class="card-text">$1.080</p>
                                 <button class="btn" data-id-product= "8" onclick="msj(this)">Comprar</button>
-                                </div>
                             </div>
-                            <div class="card col producto">
-                                <img src="./imagenes/tortas/lemon_pie.jpg" class="card-img-top rounded mx-auto" alt="foto lemon pie">
-                                <div class="card-body">
+                        </div>
+                        <div class="card col producto">
+                            <img src="./imagenes/tortas/lemon_pie.jpg" loading="lazy" class="card-img-top rounded mx-auto" alt="foto lemon pie">
+                            <div class="card-body">
                                 <p class="card-title text-uppercase">lemon pie</p>
                                 <p class="card-text">$1.200</p>
                                 <button class="btn" data-id-product= "9" onclick="msj(this)">Comprar</button>
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="container">
-                        <div class="row"> 
-                            <div class="card col producto">
-                                <img src="./imagenes/tortas/torta_frutal.jpg" class="card-img-top rounded mx-auto" alt="foto torta frutal">
-                                <div class="card-body">
+                </div>
+                <div class="container">
+                    <div class="row"> 
+                        <div class="card col producto">
+                            <img src="./imagenes/tortas/torta_frutal.jpg" loading="lazy" class="card-img-top rounded mx-auto" alt="foto torta frutal">
+                            <div class="card-body">
                                 <p class="card-title text-uppercase">torta frutal</p>
                                 <p class="card-text">$1.500</p>
                                 <button class="btn" data-id-product= "10" onclick="msj(this)">Comprar</button>
-                                </div>
                             </div>
-                            <div class="card col producto">
-                                <img src="./imagenes/tortas/tiramisu.jpg" class="card-img-top rounded mx-auto" alt="foto tiramisu">
-                                <div class="card-body">
+                        </div>
+                        <div class="card col producto">
+                            <img src="./imagenes/tortas/tiramisu.jpg"  loading="lazy" class="card-img-top rounded mx-auto" alt="foto tiramisu">
+                            <div class="card-body">
                                 <p class="card-title text-uppercase">tiramisu</p>
                                 <p class="card-text">$2.000</p>
-                                <button class="btn" data-id-product= "11" onclick="msj(this)">Comprar</button>
-                                </div>
+                            <button class="btn" data-id-product= "11" onclick="msj(this)">Comprar</button>
                             </div>
-                            <div class="card col producto">
-                                <img src="./imagenes/tortas/torta_tradicional.jpg" class="card-img-top rounded mx-auto" alt="foto torta tradicional">
-                                <div class="card-body text-uppercase">
+                        </div>
+                        <div class="card col producto">
+                            <img src="./imagenes/tortas/torta_tradicional.jpg" loading="lazy" class="card-img-top rounded mx-auto" alt="foto torta tradicional">
+                            <div class="card-body text-uppercase">
                                 <p class="card-title">torta tradicional</p>
                                 <p class="card-text">$2.000</p>
                                 <button class="btn" data-id-product= "12" onclick="msj(this)">Comprar</button>
-                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
             </section>
             <section id="quienes_somos">
                 <h3 class="titulos text-center">Nosotros</h3>
@@ -209,7 +209,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-10">
-                                        <input id="telefono" name="telefono" type="number" placeholder="telefono" class="form-control" required>
+                                        <input id="telefono" name="telefono" type="number" placeholder="teléfono" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -232,70 +232,63 @@
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="./imagenes/quienes_somos/pasteleria.jpg" class="d-block w-100" alt="...">
+                                    <img src="./imagenes/quienes_somos/pasteleria.jpg" loading="lazy" class="d-block w-100" alt="foto de la pasteleria">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="./imagenes/quienes_somos/pasteleria_2.jpg" class="d-block w-100" alt="...">
+                                    <img src="./imagenes/quienes_somos/pasteleria_2.jpg" loading="lazy" class="d-block w-100" alt="foto de la pastelera">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="./imagenes/quienes_somos/pasteleria_3.jpg" class="d-block w-100" alt="...">
+                                    <img src="./imagenes/quienes_somos/pasteleria_3.jpg" loading="lazy" class="d-block w-100" alt="foto de la pastelera">
                                 </div>
                             </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
                                 </button>
                                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
                                 </button>
-                                        
                         </div>
                     </div>
                 </div>
             </section>
         </main>
-            <!-- Footer -->
+        <!-- Footer -->
         <footer class="text-center text-lg-start bg-light text-muted">
             <!-- Seccion de Links  -->
-            <section class="">
-            <div class="container text-center text-md-start mt-5">
-                <div class="row mt-3">
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <h3 class="text-uppercase fw-bold mb-4">Amapolas 
-                    </h3>
-                    <img src="./imagenes/quienes_somos/pasteleria_4.jpg" class="img-fluid rounded mx-auto" width="200rem" alt="foto de nosotros">
-                    <p><img src="./imagenes/iconos/ubicacion.png" alt="icono de ubicacion" width="24" height="24">Pasteleria Amapolas Av. siempre viva 123</p>
-                </div>
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h3 class="text-uppercase fw-bold mb-4">
-                    Productos
-                    </h3>
-                    <p>
-                    <a href="index.html#desayunos" class="text-reset">Desayunos</a>
-                    </p>
-                    <p>
-                    <a href="index.html#tortas" class="text-reset">Tortas</a>
-                    </p>
-                </div>
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                    <!-- Redes -->
-                    <h3 class="text-uppercase fw-bold mb-4">Contactanos</h3>
-                    <div>
-                        <a href="https://es-la.facebook.com/" class="me-4 text-reset" target="_blank"><img src="./imagenes/iconos/facebook.png" alt="icono facebook" width="32" height="32">
-                        </a>
-                        <a class="me-4 text-reset" target="_blank" id="WSP" onclick="mensajeWsp()" href=""><img src="./imagenes/iconos/whatsapp.png" alt="icono whatsapp" width="32" height="32">
-                        </a>
-                        <a href="https://www.instagram.com/" class="me-4 text-reset" target="_blank"><img src="./imagenes/iconos/instagram.png" alt="icono instagram" width="32" height="32">
-                        </a>
+            <section>
+                <div class="container text-center text-md-start mt-5">
+                    <div class="row mt-3">
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <h3 class="text-uppercase fw-bold mb-4">Amapolas</h3>
+                            <img src="./imagenes/quienes_somos/pasteleria_4.jpg" class="img-fluid rounded mx-auto" width="200rem" alt="foto de nosotros">
+                            <p><img src="./imagenes/iconos/ubicacion.png" alt="icono de ubicacion" width="24" height="24">Pasteleria Amapolas Av. siempre viva 123</p>
+                        </div>
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h3 class="text-uppercase fw-bold mb-4">Productos</h3>
+                            <a href="index.html#desayunos" class="text-reset">Desayunos</a>
+                            <a href="index.html#tortas" class="text-reset">Tortas</a>
+                        </div>
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Redes -->
+                            <h3 class="text-uppercase fw-bold mb-4">Contactanos</h3>
+                            <div>
+                                <a href="https://es-la.facebook.com/" class="me-4 text-reset" target="_blank"><img src="./imagenes/iconos/facebook.png" alt="icono facebook" width="32" height="32">
+                                </a>
+                                <a class="me-4 text-reset" target="_blank" id="WSP" onclick="mensajeWsp()" href=""><img src="./imagenes/iconos/whatsapp.png" alt="icono whatsapp" width="32" height="32">
+                                </a>
+                                <a href="https://www.instagram.com/" class="me-4 text-reset" target="_blank"><img src="./imagenes/iconos/instagram.png" alt="icono instagram" width="32" height="32">
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
             </section>
             <!-- Copyright -->
             <div class="text-center p-4">
-            © 2022 Copyright: Amapolas S.R.L.
+                <p>© 2022 Copyright: Amapolas S.R.L.</p>
             </div>
         </footer>
     </div>

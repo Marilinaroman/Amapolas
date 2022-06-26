@@ -1,0 +1,22 @@
+[
+    {
+        "idZonaEnvio": 1, 
+        "precioEnvio": 0,
+        "descripcionEnvio": "CABA"
+    },
+    {
+        "idZonaEnvio": 2,
+        "precioEnvio": 400,
+        "descripcionEnvio": "Zona Norte"
+    },
+    {
+        "idZonaEnvio": 3,
+        "precioEnvio": 450,
+        "descripcionEnvio": "Zona Sur"
+    },
+    {
+        "idZonaEnvio": 4,
+        "precioEnvio": 500,
+        "descripcionEnvio": "Zona Oeste"
+    }
+]

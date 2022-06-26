@@ -1,21 +1,21 @@
 *{
     margin: 0;
-    padding: 0%;
+    padding: 0;
     box-sizing: border-box;
     font-family: 'Mukta', sans-serif;
     list-style: none;
-    
 }
+
 //-----Navbar-----//
 header{
     background-color: white;
-    
     nav{
         display: flex;
         flex-direction: row;       
         background-color: white;
         align-items: center;
         height: 5rem;
+        
         .nav-toggle-menu{
             background: none;
             border: none;
@@ -52,7 +52,6 @@ header{
             .boton_carrito, img{
                 border:none;
                 background-color: white;
-    
             }
                 
         }
@@ -72,11 +71,15 @@ header{
             border-color: #d6f3a0;
             border-width: 0.25rem;
             border-style: solid;
-            overflow-y: scroll;
+            
         }
         .carrito_visible{
             right: 0;
             display: block;
+            scrollbar-width: none;
+            width: 50%;
+            height: 80%;
+            overflow-y: scroll;
                 .navbar-item-link{
                     color:white;
                     line-height: 4rem;
@@ -104,6 +107,7 @@ header{
     }
 
 }
+
 .imagen_principal{
     margin-bottom: 1rem;
 }
@@ -247,7 +251,7 @@ footer{
 }  
 
 .swal2-popup{
-    .btn, .btn_2, .btn_3,.btn_4{
+    .btn, .btn_2, .btn_3,.btn_4,.btn_5{
         box-shadow: none !important;
         background-color: #d1e9a3 !important;
         color: black !important;
@@ -265,5 +269,7 @@ footer{
         }
     }
 }
-
+#pag_principal{
+    overflow-x: hidden !important;
+}
 @import "mQueries";

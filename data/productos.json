@@ -1,0 +1,62 @@
+[
+    { 
+        "id": 1, 
+        "producto": "banana split por unidad", 
+        "idPrecio": 100 
+    },
+    {
+        "id": 2,
+        "producto": "lemon pie por unidad",
+        "idPrecio": 110
+    },
+    { 
+        "id": 3,
+        "producto": "trufas por unidad",
+        "idPrecio": 100
+    },
+    {
+        "id": 4,
+        "producto": "mini brownie por unidad",
+        "idPrecio": 120
+    },
+    {
+        "id": 5,
+        "producto": "mini tarta del bosque por unidad",
+        "idPrecio": 140 
+    },
+    { 
+        "id": 6,
+        "producto": "mini tiramisu por unidad",
+        "idPrecio": 140 
+    },
+    { 
+        "id": 7,
+        "producto": "cheescake",
+        "idPrecio": 1000
+    },
+    { 
+        "id": 8,
+        "producto": "chocotorta",
+        "idPrecio": 1080 
+    },
+    { 
+        "id": 9,
+        "producto": "lemon pie",
+        "idPrecio": 1200 
+    },
+    { 
+        "id": 10,
+        "producto": "torta frutal",
+        "idPrecio": 1500 
+    },
+    {
+        "id": 11,
+        "producto": "tiramisu",
+        "idPrecio": 2000
+    },
+    {
+        "id": 12,
+        "producto": "torta tradicional",
+        "idPrecio": 2000
+    }
+]

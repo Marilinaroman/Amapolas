@@ -35,6 +35,20 @@ const cancelarCompra = document.getElementById('cancelar_compra');
 // Recupero el carrito del LS
 localStorage.getItem('listaProductos')? recuperoLS() : console.log('error');
 
+//Genero el array envio desde el archivo Json
+const envio = [];
+const urlEnvio =new Request('./../data/envio.json', myInit);
+
+fetch(urlEnvio)
+.then(function (response) {
+    return response.json();
+}).then(function (json) {
+    let keys = Object.keys(json);
+keys.forEach(function(key){
+    envio.push(json[key]);
+});
+    return envio;
+})
 
 // Genero en carrito_compra.html el detalle final del carrito
 function carritoHtml() {
@@ -87,14 +101,12 @@ function limpiarHTML() {
 function eliminarProducto(x){
     const boton = carritoHTML.querySelectorAll('.borrar-producto[data-id]');
     let id = x.id;
-    console.log(id);
 
     boton.forEach(e =>{
         console.log(e.parentElement);
         botonInfo = e.getAttribute('data-id');
         if(id == botonInfo){
             carritoFinal= carritoFinal.filter(detallePedido => detallePedido.productoPedido !== botonInfo);
-            console.log(carritoFinal)
             limpiarHTML();
             carritoHtml();
             return carritoFinal;
@@ -108,12 +120,10 @@ function eliminarProducto(x){
 function sumaProducto(x){
     const botonSuma = carritoHTML.querySelectorAll('.btn_suma');
     let idBotonSuma = x.getAttribute('data-id');
-    console.log(idBotonSuma);
     botonSuma.forEach(e =>{
         let indexBtnSuma = e.getAttribute('data-id')
         if(idBotonSuma == indexBtnSuma ){
             carritoFinal[indexBtnSuma].cantidadPedido += 1;
-            console.log(e);
             limpiarHTML();
             carritoHtml();
             return carritoFinal;
@@ -127,12 +137,10 @@ function sumaProducto(x){
 function restaProducto(x){
     const botonResta = carritoHTML.querySelectorAll('.btn_resta');
     let idBotonResta = x.getAttribute('data-id');
-    console.log(idBotonResta);
     botonResta.forEach(e =>{
         let indexBtnResta = e.getAttribute('data-id');
         if(idBotonResta == indexBtnResta ){
             carritoFinal[indexBtnResta].cantidadPedido>0? (carritoFinal[indexBtnResta].cantidadPedido -= 1) : console.log('es cero');
-            console.log(e)
             limpiarHTML();
             carritoHtml();
             return carritoFinal
@@ -173,10 +181,6 @@ function opcionDomicilio(a){
 		return costoEnvio;
     }
 }
-
-
-console.log(importeACobrar)
-
 
 //Funcion para generar el alert de código de descuento correcto
 const codigoOk = () => {
@@ -227,7 +231,6 @@ const eliminaBoton = () =>{
     for (e of botones){
         e.classList.add('d-none')
     }
-    
     return msjAlerta
 }
 
@@ -235,17 +238,17 @@ const eliminaBoton = () =>{
 const agregaInfo = () =>{
     let masInfo = document.createElement('tbody');
     info = `<tr>
-                    <th scope="row">Costo Envio</th>
-                    <td colspan="4">$${costoEnvio}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Descuento Aplicado</th>
-                    <td colspan="4">$${descuento}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Total a Pagar</th>
-                    <td colspan="4">$${totalFinal - descuento + costoEnvio}</td>
-                </tr>`
+                <th scope="row">Costo Envio</th>
+                <td colspan="4">$${costoEnvio}</td>
+            </tr>
+            <tr>
+                <th scope="row">Descuento Aplicado</th>
+                <td colspan="4">$${descuento}</td>
+            </tr>
+            <tr>
+                <th scope="row">Total a Pagar</th>
+                <td colspan="4">$${totalFinal - descuento + costoEnvio}</td>
+            </tr>`
     masInfo.innerHTML = info;
     msjAlerta.appendChild(masInfo);
     return msjAlerta
@@ -258,11 +261,13 @@ const agregaInfo = () =>{
 confirmarPago.addEventListener('click', () =>{
     let datosOk = (nombreTarjeta.value && numeroTarjeta.value && fechaTarjeta.value && passTarjeta.value) || datosTarjeta.classList.contains('oculta')
     
-    // mensaje
-    let spanAlerta = document.createElement('span')
-    eliminaBoton();
-    agregaInfo();
-    spanAlerta.appendChild(msjAlerta);
+    // mensaje con detalle de la compra
+    let spanAlerta = document.createElement('span');
+    if(datosOk){
+        eliminaBoton();
+        agregaInfo();
+        spanAlerta.appendChild(msjAlerta);
+    }
 
     datosOk? Swal.fire({
         title: 'Estas por confirmar la siguiente compra:',

@@ -24,21 +24,32 @@ let botonInfoPrevio;
 const carritoPrevioHtml = document.querySelector('#detalle_mi_carrito')
 let pagPrin = document.body.id;
 
-// Genero array de productos
-const productos = [
-    { id: 1, producto: "banana split por unidad", idPrecio: 100 },
-    { id: 2, producto: "lemon pie por unidad", idPrecio: 110 },
-    { id: 3, producto: "trufas por unidad", idPrecio: 100 },
-    { id: 4, producto: "mini brownie por unidad", idPrecio: 120 },
-    { id: 5, producto: "mini tarta del bosque por unidad", idPrecio: 140 },
-    { id: 6, producto: "mini tiramisu por unidad", idPrecio: 140 },
-    { id: 7, producto: "cheescake", idPrecio: 1000 },
-    { id: 8, producto: "chocotorta", idPrecio: 1080 },
-    { id: 9, producto: "lemon pie", idPrecio: 1200 },
-    { id: 10, producto: "torta frutal", idPrecio: 1500 },
-    { id: 11, producto: "tiramisu", idPrecio: 2000 },
-    { id: 12, producto: "torta tradicional", idPrecio: 2000 },
-];
+// Genero array de productos desde archivo JSON
+const productos = [];
+let myInit = {
+    method:'GET',
+    headers:{
+        'content-type':'application/json'
+    },
+    mode:'cors',
+    cache:'default'
+};
+
+const URLjson=new Request('./data/productos.json', myInit)
+
+if(pagPrin === "pag_principal"){
+    fetch(URLjson)
+    .then(function (response) {
+            return response.json();
+    }).then(function (json) {
+        let keys = Object.keys(json);
+        keys.forEach(function(key){
+            productos.push(json[key]);
+        });
+        return productos;
+    })
+}
+
 
 // Genero el contructor del array pedido
 class detallePedido {
@@ -49,13 +60,6 @@ class detallePedido {
     };
     
 };
-
-const envio = [
-    {idZonaEnvio: 1, precioEnvio: 0, descripcionEnvio: "CABA"},
-    {idZonaEnvio: 2, precioEnvio: 400, descripcionEnvio: "Zona Norte"},
-    {idZonaEnvio: 3, precioEnvio: 450, descripcionEnvio: "Zona Sur"},
-    {idZonaEnvio: 4, precioEnvio: 500, descripcionEnvio: "Zona Oeste"}
-];
 
 // Guardo el array en el LS
 const guardoLS = () =>{
@@ -120,14 +124,12 @@ function consultaArrayPedido (){
 
     if (arrayPedido == ""){
         cantidadPedido = 1;
-        console.log(arrayPedido);
         arrayPedido.push(new detallePedido(productoPedido, cantidadPedido, precioPedido));        
         limpiarPrevioHtml();
         carritoPreliminar();
         return arrayPedido;
     } else if((arrayPedido)) {
         consultaPedido = arrayPedido.find((encontrarProducto) => encontrarProducto.productoPedido == productoPedido);
-
         if( consultaPedido == undefined){
             cantidadPedido = 1;
             arrayPedido.push(new detallePedido(productoPedido, cantidadPedido, precioPedido));
@@ -185,8 +187,6 @@ function limpiarPrevioHtml() {
 function eliminarProductoPrevio(x){
     const boton = carritoPrevioHtml.querySelectorAll('.borrar-producto[data-id]');
     let id = x.id;
-    console.log(id);
-
     boton.forEach(e =>{
         botonInfoPrevio = e.getAttribute('data-id');
         console.log(botonInfoPrevio);
@@ -208,12 +208,10 @@ function eliminarProductoPrevio(x){
 function sumaProductoPrevio(x){
     const botonSuma = carritoPrevioHtml.querySelectorAll('.btn_suma');
     let idBotonSuma = x.getAttribute('data-id');
-    console.log(idBotonSuma);
     botonSuma.forEach(e =>{
         let indexBtnSuma = e.getAttribute('data-id');
         if(idBotonSuma == indexBtnSuma ){
-            arrayPedido[indexBtnSuma].cantidadPedido += 1
-            console.log(e);
+            arrayPedido[indexBtnSuma].cantidadPedido += 1;
             limpiarPrevioHtml();
             carritoPreliminar();
             return arrayPedido;
@@ -227,12 +225,10 @@ function sumaProductoPrevio(x){
 function restaProductoPrevio(x){
     const botonResta = carritoPrevioHtml.querySelectorAll('.btn_resta');
     let idBotonResta = x.getAttribute('data-id');
-    console.log(idBotonResta);
     botonResta.forEach(e =>{
         let indexBtnResta = e.getAttribute('data-id');
         if(idBotonResta == indexBtnResta ){
             arrayPedido[indexBtnResta].cantidadPedido>0? (arrayPedido[indexBtnResta].cantidadPedido -= 1) : console.log('es cero');
-            console.log(e);
             limpiarPrevioHtml();
             carritoPreliminar();
             return arrayPedido;
@@ -272,7 +268,6 @@ const vaciarCarrito = () =>{
                 arrayPedido.length = []
                 limpiarPrevioHtml();
                 carritoPreliminar();
-                console.log(arrayPedido)
             } 
         })
 }

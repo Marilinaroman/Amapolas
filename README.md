@@ -7,7 +7,7 @@ El Sitio WEB contiene las siguientes páginas:
 
 <ul>
 <li>Inicio</li>
-<li>Ingresar</li>
+<li>Cuenta</li>
 <li>Carrito</li>
 </ul>
 
@@ -17,9 +17,9 @@ El Sitio WEB contiene las siguientes páginas:
 
 ## Sitio WEB
 
-[Amapolas Website @ Github Pages](https://marilinaroman.github.io/Amapolas/)
+[Pasteleria Amapolas Website @ Github Pages](https://marilinaroman.github.io/Amapolas/)
 
-[ Website @ 000webhostapp]()
+[Pasteleria Amapolas Website @ 000webhostapp](pasteleriaamapolas.000webhostapp.com)
 
 <br>
 

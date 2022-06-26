@@ -1,5 +1,3 @@
-
-
 // Variables del login
 let buscarLogin = [];
 let mailConsulta;
@@ -20,8 +18,6 @@ class registroClientes {
     };
 };
 
-
-
 //Guardo en el Session Storage
 const guardoRegistroSS = () =>{
 	sessionStorage.setItem("registroCliente", JSON.stringify(clientes))
@@ -34,24 +30,25 @@ const guardoClienteLS = () => {
 
 //Recupero login del Local Storage
 const recuperoCliente = () =>{
-	clientes = JSON.parse(localStorage.getItem("clienteRecordar"))
-	console.log(clientes)
+	clientes = JSON.parse(localStorage.getItem("clienteRecordar"));
 	return clientes;
 }
 
 if(localStorage.getItem("clienteRecordar")){
-	console.log(clientes)
 	recuperoCliente();
 	document.getElementById("email_registrado").value= clientes[0].idMail
 	document.getElementById("consulta_contraseña").value = clientes[0].contraseña
 }
 
 //Alert de registro exitoso
-const registroOk =()=>{
-	Swal.Fire({
+const registroOk = () =>{
+	Swal.fire({
 		icon: 'success',
-		iconColor:'fad8ce',
-  		title: 'Te registraste correctamente!',
+		title: 'Te registraste exitosamente',
+		iconColor:'#fad8ce',
+		customClass:{
+            confirmButton:'btn_5',
+		}
 	})
 }
 
@@ -81,7 +78,7 @@ function registrarme (){
 				contraseña = contraseñaCliente;
 				clientes.push(new registroClientes(idMail,contraseña))
 				guardoRegistroSS();
-				
+				registroOk();
 				return clientes
 			}
 				return clientes
